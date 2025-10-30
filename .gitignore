@@ -1,0 +1,16 @@
+# PHP vendor (Composer)
+vendor/
+
+# Node dependencies
+node_modules/
+
+# Build output Tailwind (hasil generate)
+dist/
+public/css/
+
+# System / IDE files
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
