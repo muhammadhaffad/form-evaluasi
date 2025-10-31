@@ -102,26 +102,47 @@
             <table>
               <thead>
                 <tr>
-                  <th width="5%">No</th>
-                  <th width="40%">Sub Indikator</th>
-                  <th width="25%">Dokumen Pendukung</th>
-                  <th width="20%" class="evaluation-header">Hasil Evaluasi</th>
-                  <th width="10%">Keterangan</th>
+                  <th rowspan="2">No</th>
+                  <th rowspan="2">Indikator</th>
+                  <th rowspan="2">Kriteria Penilaian</th>
+                  <th colspan="2">Acuan</th>
+                  <th class="evaluation-header" colspan="2">Hasil Evaluasi</th>
+                  <th colspan="2">Skor Penilaian</th>
+                  <th rowspan="2">Nilai Akhir</th>
+                </tr>
+                <tr>
+                  <th>Bobot (%)</th>
+                  <th>Nilai</th>
+                  <th class="evaluation-header">Nilai</th>
+                  <th>Bobot</th>
+                  <th>Total Bobot</th>
+                  <th>Kategori</th>
                 </tr>
               </thead>
               <tbody>
                 <!-- Section 1 -->
                 <tr class="section-title">
-                  <th colspan="5" style="background-color: aliceblue;">
+                  <th colspan="9" style="background-color: aliceblue;">
                     <i class="fas fa-building"></i>
                     Kondisi Bangunan
                   </th>
+                  <td> nilai akhir section
+                  </td>
+                </tr>
+
+                <!-- Sub-Section 1-1 -->
+                <tr>
+                  <td>a</td>
+                  <td colspan="8">Struktur (40%)</td>
+                  <td>Nilai Sub</td>
                 </tr>
                 <tr>
-                  <td>1</td>
-                  <td>Komponen struktur dan arsitektur bangunan dalam kondisi terjaga/sesuai mutu rencana</td>
-                  <td>Dokumentasi bangunan</td>
-                  <td>
+                  <td rowspan="3">1</td>
+                  <td rowspan="3">Kondisi Struktur Bawah (Fondasi)</td>
+                  <td>Tidak ada penurunan/retak, fondasi stabil.</td>
+                  <td rowspan="3">30</td>
+                  <td>3</td>
+                  <td rowspan="3">
                     <div class="dropdown-container">
                       <div class="custom-dropdown" data-id="dropdown1">
                         <div class="dropdown-select">
@@ -129,25 +150,33 @@
                           <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="dropdown-options">
-                          <div class="dropdown-option option-1" data-value="kurang baik">Kurang Baik</div>
-                          <div class="dropdown-option option-2" data-value="cukup baik">Cukup Baik</div>
-                          <div class="dropdown-option option-3" data-value="baik">Baik</div>
-                          <div class="dropdown-option option-4" data-value="sangat baik">Sangat Baik</div>
+                          <div class="dropdown-option option-1" data-value="cukup baik">1</div>
+                          <div class="dropdown-option option-2" data-value="baik">2</div>
+                          <div class="dropdown-option option-3" data-value="sangat baik">3</div>
                         </div>
                       </div>
                     </div>
                   </td>
-                  <td>
-                    <button type="button" class="note-btn" title="Tambahkan catatan">
-                      <i class="fas fa-sticky-note"></i>
-                    </button>
-                  </td>
+                  <td rowspan="3" id="bobotEval1">bobot eval</td>
+                  <td rowspan="12" id="bobotPenilaian1">bobot penilaian</td>
+                  <td rowspan="12" id="kategoriNilai1">kategori</td>
+                  <td rowspan="12" id="nilaiAkhir1">Nilai Akhir</td>
                 </tr>
+                <td>Ada retakan kecil/penurunan sebagian namun masih aman digunakan.</td>
+                <td>2</td>
                 <tr>
-                  <td>2</td>
-                  <td>Seluruh komponen dalam bangunan berfungsi sesuai dengan perencanaan</td>
-                  <td>Gambar terlaksana (as built drawings)</td>
-                  <td>
+                  <td>Retak besar, penurunan signifikan, tidak mampu menahan beban.</td>
+                  <td>1</td>
+                </tr>
+
+
+                <tr>
+                  <td rowspan="3">2</td>
+                  <td rowspan="3">Kondisi Struktur Atas (Kolom, Sloof, Balok, Pelat Lantai)</td>
+                  <td>Tidak retak besar, tidak miring, tidak ada deformasi.</td>
+                  <td rowspan="3">30</td>
+                  <td>3</td>
+                  <td rowspan="3">
                     <div class="dropdown-container">
                       <div class="custom-dropdown" data-id="dropdown2">
                         <div class="dropdown-select">
@@ -155,25 +184,30 @@
                           <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="dropdown-options">
-                          <div class="dropdown-option option-1" data-value="kurang baik">Kurang Baik</div>
-                          <div class="dropdown-option option-2" data-value="cukup baik">Cukup Baik</div>
-                          <div class="dropdown-option option-3" data-value="baik">Baik</div>
-                          <div class="dropdown-option option-4" data-value="sangat baik">Sangat Baik</div>
+                          <div class="dropdown-option option-1" data-value="cukup baik">1</div>
+                          <div class="dropdown-option option-2" data-value="baik">2</div>
+                          <div class="dropdown-option option-3" data-value="sangat baik">3</div>
                         </div>
                       </div>
                     </div>
                   </td>
-                  <td>
-                    <button type="button" class="note-btn" title="Tambahkan catatan">
-                      <i class="fas fa-sticky-note"></i>
-                    </button>
-                  </td>
+                  <td rowspan="3" id="bobotEval2">bobot eval</td>
                 </tr>
+                <td>Ada kerusakan ringan/sedang, tapi struktur masih berdiri.</td>
+                <td>2</td>
                 <tr>
+                  <td>Retak berat, deformasi signifikan, atau roboh.</td>
+                  <td>1</td>
+                </tr>
+
+
+                <tr>
+                  <td rowspan="3">3</td>
+                  <td rowspan="3">Kondisi Rangka Atap (Rangka, Gording)</td>
+                  <td>Tidak melengkung, kokoh, tidak terlepas</td>
+                  <td rowspan="3">30</td>
                   <td>3</td>
-                  <td>Bangunan memenuhi persyaratan keselamatan dan kesehatan</td>
-                  <td>Dokumentasi bangunan</td>
-                  <td>
+                  <td rowspan="3">
                     <div class="dropdown-container">
                       <div class="custom-dropdown" data-id="dropdown3">
                         <div class="dropdown-select">
@@ -181,31 +215,30 @@
                           <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="dropdown-options">
-                          <div class="dropdown-option option-1" data-value="kurang baik">Kurang Baik</div>
-                          <div class="dropdown-option option-2" data-value="cukup baik">Cukup Baik</div>
-                          <div class="dropdown-option option-3" data-value="baik">Baik</div>
-                          <div class="dropdown-option option-4" data-value="sangat baik">Sangat Baik</div>
+                          <div class="dropdown-option option-1" data-value="cukup baik">1</div>
+                          <div class="dropdown-option option-2" data-value="baik">2</div>
+                          <div class="dropdown-option option-3" data-value="sangat baik">3</div>
                         </div>
                       </div>
                     </div>
                   </td>
-                  <td>
-                    <button type="button" class="note-btn" title="Tambahkan catatan">
-                      <i class="fas fa-sticky-note"></i>
-                    </button>
-                  </td>
+                  <td rowspan="3" id="bobotEval3">bobot eval</td>
                 </tr>
+                <td>Ada kelengkungan ringan, baut/koneksi melemah, masih berfungsi sebagian.</td>
+                <td>2</td>
                 <tr>
-                  <td>4</td>
-                  <td>Bangunan memenuhi persyaratan kemudahan (akses) dan kenyamanan</td>
-                  <td>
-                    <ul class="doc-list">
-                      <li>Dokumentasi terbangun</li>
-                      <li>Gambar terlaksana (as built drawings)</li>
-                      <li>Laporan hasil pengawasan</li>
-                    </ul>
-                  </td>
-                  <td>
+                  <td>Rangka goyah, roboh, atau terlepas dari struktur utama.</td>
+                  <td>1</td>
+                </tr>
+
+
+                <tr>
+                  <td rowspan="3">4</td>
+                  <td rowspan="3">Kondisi Struktur Lain (Tangga)</td>
+                  <td>Tidak melengkung, tidak roboh, kokoh.</td>
+                  <td rowspan="3">10</td>
+                  <td>3</td>
+                  <td rowspan="3">
                     <div class="dropdown-container">
                       <div class="custom-dropdown" data-id="dropdown4">
                         <div class="dropdown-select">
@@ -213,30 +246,35 @@
                           <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="dropdown-options">
-                          <div class="dropdown-option option-1" data-value="kurang baik">Kurang Baik</div>
-                          <div class="dropdown-option option-2" data-value="cukup baik">Cukup Baik</div>
-                          <div class="dropdown-option option-3" data-value="baik">Baik</div>
-                          <div class="dropdown-option option-4" data-value="sangat baik">Sangat Baik</div>
+                          <div class="dropdown-option option-1" data-value="cukup baik">1</div>
+                          <div class="dropdown-option option-2" data-value="baik">2</div>
+                          <div class="dropdown-option option-3" data-value="sangat baik">3</div>
                         </div>
                       </div>
                     </div>
                   </td>
-                  <td>
-                    <button type="button" class="note-btn" title="Tambahkan catatan">
-                      <i class="fas fa-sticky-note"></i>
-                    </button>
-                  </td>
+                  <td rowspan="3" id="bobotEval4">bobot eval</td>
+                </tr>
+                <td>Ada kerusakan ringan (retak, korosi), masih dapat digunakan.</td>
+                <td>2</td>
+                <tr>
+                  <td>Rusak berat, roboh.</td>
+                  <td>1</td>
+                </tr>
+
+                <!-- Sub-Section 1-2 -->
+                <tr>
+                  <td>b</td>
+                  <td colspan="8">Arsitektur (30%)</td>
+                  <td>nilai sub</td>
                 </tr>
                 <tr>
-                  <td>5</td>
-                  <td>Mutu dan kualitas bangunan sesuai dengan perencanaan</td>
-                  <td>
-                    <ul class="doc-list">
-                      <li>Dokumentasi pemanfaatan</li>
-                      <li>Gambar terlaksana (as built drawings)</li>
-                    </ul>
-                  </td>
-                  <td>
+                  <td rowspan="3">1</td>
+                  <td rowspan="3">Kondisi lantai</td>
+                  <td>Rata, tidak pecah, aman</td>
+                  <td rowspan="3">20</td>
+                  <td>3</td>
+                  <td rowspan="3">
                     <div class="dropdown-container">
                       <div class="custom-dropdown" data-id="dropdown5">
                         <div class="dropdown-select">
@@ -244,39 +282,33 @@
                           <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="dropdown-options">
-                          <div class="dropdown-option option-1" data-value="kurang baik">Kurang Baik</div>
-                          <div class="dropdown-option option-2" data-value="cukup baik">Cukup Baik</div>
-                          <div class="dropdown-option option-3" data-value="baik">Baik</div>
-                          <div class="dropdown-option option-4" data-value="sangat baik">Sangat Baik</div>
+                          <div class="dropdown-option option-1" data-value="cukup baik">1</div>
+                          <div class="dropdown-option option-2" data-value="baik">2</div>
+                          <div class="dropdown-option option-3" data-value="sangat baik">3</div>
                         </div>
                       </div>
                     </div>
                   </td>
-                  <td>
-                    <button type="button" class="note-btn" title="Tambahkan catatan">
-                      <i class="fas fa-sticky-note"></i>
-                    </button>
-                  </td>
+                  <td rowspan="3" id="bobotEval5">bobot eval</td>
+                  <td rowspan="12" id="bobotPenilaian2">bobot penilaian</td>
+                  <td rowspan="12" id="kategoriNilai2">kategori</td>
+                  <td rowspan="12" id="nilaiAkhir2">Nilai Akhir</td>
+                </tr>
+                <td>Ada pecah/retak sebagian, permukaan kurang rata.</td>
+                <td>2</td>
+                <tr>
+                  <td>Lantai rusak berat, berlubang, tidak aman dipakai.</td>
+                  <td>1</td>
                 </tr>
 
-                <!-- Section 2 -->
-                <tr class="section-title">
-                  <th colspan="5" style="background-color: aliceblue;">
-                    <i class="fas fa-road"></i>
-                    Kondisi Jalan Lingkungan
-                  </th>
-                </tr>
+
                 <tr>
-                  <td>1</td>
-                  <td>Ketersediaan jaringan jalan yang mampu melayani aksesibilitas masyarakat sekitar kawasan strategis
-                  </td>
-                  <td>
-                    <ul class="doc-list">
-                      <li>Dokumentasi pemanfaatan</li>
-                      <li>Gambar terlaksana (as built drawings)</li>
-                    </ul>
-                  </td>
-                  <td>
+                  <td rowspan="3">2</td>
+                  <td rowspan="3">Kondisi Dinding</td>
+                  <td>Finishing baik, cat tidak mengelupas, tidak lembab.</td>
+                  <td rowspan="3">20</td>
+                  <td>3</td>
+                  <td rowspan="3">
                     <div class="dropdown-container">
                       <div class="custom-dropdown" data-id="dropdown6">
                         <div class="dropdown-select">
@@ -284,29 +316,30 @@
                           <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="dropdown-options">
-                          <div class="dropdown-option option-1" data-value="kurang baik">Kurang Baik</div>
-                          <div class="dropdown-option option-2" data-value="cukup baik">Cukup Baik</div>
-                          <div class="dropdown-option option-3" data-value="baik">Baik</div>
-                          <div class="dropdown-option option-4" data-value="sangat baik">Sangat Baik</div>
+                          <div class="dropdown-option option-1" data-value="cukup baik">1</div>
+                          <div class="dropdown-option option-2" data-value="baik">2</div>
+                          <div class="dropdown-option option-3" data-value="sangat baik">3</div>
                         </div>
                       </div>
                     </div>
                   </td>
-                  <td>
-                    <button type="button" class="note-btn" title="Tambahkan catatan">
-                      <i class="fas fa-sticky-note"></i>
-                    </button>
-                  </td>
+                  <td rowspan="3" id="bobotEval6">bobot eval</td>
                 </tr>
+                <td>Cat mengelupas, lembab/berjamur sebagian</td>
+                <td>2</td>
                 <tr>
-                  <td>2</td>
-                  <td>Kualitas permukaan jalan sesuai dengan mutu rencana</td>
-                  <td>
-                    <ul class="doc-list">
-                      <li>Dokumentasi pemanfaatan</li>
-                    </ul>
-                  </td>
-                  <td>
+                  <td>Retak besar, roboh sebagian/seluruhnya</td>
+                  <td>1</td>
+                </tr>
+
+
+                <tr>
+                  <td rowspan="3">3</td>
+                  <td rowspan="3">Kondisi Pintu dan jendela</td>
+                  <td>Bisa dibuka/tutup dengan baik, kunci berfungsi, tidak rusak.</td>
+                  <td rowspan="3">20</td>
+                  <td>3</td>
+                  <td rowspan="3">
                     <div class="dropdown-container">
                       <div class="custom-dropdown" data-id="dropdown7">
                         <div class="dropdown-select">
@@ -314,29 +347,30 @@
                           <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="dropdown-options">
-                          <div class="dropdown-option option-1" data-value="kurang baik">Kurang Baik</div>
-                          <div class="dropdown-option option-2" data-value="cukup baik">Cukup Baik</div>
-                          <div class="dropdown-option option-3" data-value="baik">Baik</div>
-                          <div class="dropdown-option option-4" data-value="sangat baik">Sangat Baik</div>
+                          <div class="dropdown-option option-1" data-value="cukup baik">1</div>
+                          <div class="dropdown-option option-2" data-value="baik">2</div>
+                          <div class="dropdown-option option-3" data-value="sangat baik">3</div>
                         </div>
                       </div>
                     </div>
                   </td>
-                  <td>
-                    <button type="button" class="note-btn" title="Tambahkan catatan">
-                      <i class="fas fa-sticky-note"></i>
-                    </button>
-                  </td>
+                  <td rowspan="3" id="bobotEval7">bobot eval</td>
                 </tr>
+                <td>Ada kusen aus, kaca retak, atau pintu macet sebagian.</td>
+                <td>2</td>
                 <tr>
+                  <td>Tidak bisa digunakan sama sekali (rusak, hilang).</td>
+                  <td>1</td>
+                </tr>
+
+
+                <tr>
+                  <td rowspan="3">4</td>
+                  <td rowspan="3">Kondisi Penutup langit-langit (plafon)</td>
+                  <td>Rata, tidak rusak, tidak berjamur.</td>
+                  <td rowspan="3">20</td>
                   <td>3</td>
-                  <td>Kondisi jalan bersih tidak tertutup tanaman liar/rumput yang menutup akses</td>
-                  <td>
-                    <ul class="doc-list">
-                      <li>Dokumentasi pemanfaatan</li>
-                    </ul>
-                  </td>
-                  <td>
+                  <td rowspan="3">
                     <div class="dropdown-container">
                       <div class="custom-dropdown" data-id="dropdown8">
                         <div class="dropdown-select">
@@ -344,29 +378,29 @@
                           <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="dropdown-options">
-                          <div class="dropdown-option option-1" data-value="kurang baik">Kurang Baik</div>
-                          <div class="dropdown-option option-2" data-value="cukup baik">Cukup Baik</div>
-                          <div class="dropdown-option option-3" data-value="baik">Baik</div>
-                          <div class="dropdown-option option-4" data-value="sangat baik">Sangat Baik</div>
+                          <div class="dropdown-option option-1" data-value="cukup baik">1</div>
+                          <div class="dropdown-option option-2" data-value="baik">2</div>
+                          <div class="dropdown-option option-3" data-value="sangat baik">3</div>
                         </div>
                       </div>
                     </div>
                   </td>
-                  <td>
-                    <button type="button" class="note-btn" title="Tambahkan catatan">
-                      <i class="fas fa-sticky-note"></i>
-                    </button>
-                  </td>
+                  <td rowspan="3" id="bobotEval8">bobot eval</td>
                 </tr>
+                <td>Ada kerusakan sebagian (retak, berjamur kecil, melengkung).</td>
+                <td>2</td>
                 <tr>
-                  <td>4</td>
-                  <td>Kondisi penerangan jalan berfungsi dengan baik</td>
-                  <td>
-                    <ul class="doc-list">
-                      <li>Dokumentasi pemanfaatan</li>
-                    </ul>
-                  </td>
-                  <td>
+                  <td>Jatuh/roboh, berjamur parah, tidak bisa dipakai.</td>
+                  <td>1</td>
+                </tr>
+
+                <tr>
+                  <td rowspan="3">5</td>
+                  <td rowspan="3">Kondisi Penutup Atap</td>
+                  <td>Tidak bocor, tidak pecah, tidak terlepas.</td>
+                  <td rowspan="3">20</td>
+                  <td>3</td>
+                  <td rowspan="3">
                     <div class="dropdown-container">
                       <div class="custom-dropdown" data-id="dropdown9">
                         <div class="dropdown-select">
@@ -374,37 +408,35 @@
                           <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="dropdown-options">
-                          <div class="dropdown-option option-1" data-value="kurang baik">Kurang Baik</div>
-                          <div class="dropdown-option option-2" data-value="cukup baik">Cukup Baik</div>
-                          <div class="dropdown-option option-3" data-value="baik">Baik</div>
-                          <div class="dropdown-option option-4" data-value="sangat baik">Sangat Baik</div>
+                          <div class="dropdown-option option-1" data-value="cukup baik">1</div>
+                          <div class="dropdown-option option-2" data-value="baik">2</div>
+                          <div class="dropdown-option option-3" data-value="sangat baik">3</div>
                         </div>
                       </div>
                     </div>
                   </td>
-                  <td>
-                    <button type="button" class="note-btn" title="Tambahkan catatan">
-                      <i class="fas fa-sticky-note"></i>
-                    </button>
-                  </td>
+                  <td rowspan="3" id="bobotEval9">bobot eval</td>
                 </tr>
-                <!-- Section 3 -->
-                <tr class="section-title">
-                  <th colspan="5" style="background-color: aliceblue;">
-                    <i class="fas fa-leaf"></i>
-                    Kondisi Drainase Lingkungan
-                  </th>
+                <td>Bocor ringan/pecah sebagian.</td>
+                <td>2</td>
+                <tr>
+                  <td>Bocor parah, pecah/terlepas luas, tidak dapat melindungi ruang.</td>
+                  <td>1</td>
+                </tr>
+
+                <!-- Sub-Section 1-3 -->
+                <tr>
+                  <td>c</td>
+                  <td colspan="8">MEP (30%)</td>
+                  <td>nilai sub</td>
                 </tr>
                 <tr>
-                  <td>1</td>
-                  <td>Kondisi drainase bersih, sehingga dapat mengalirkan limpasan air dan tidak menimbulkan genangan
-                    pada jalan</td>
-                  <td>
-                    <ul class="doc-list">
-                      <li>Dokumentasi pemanfaatan</li>
-                    </ul>
-                  </td>
-                  <td>
+                  <td rowspan="3">1</td>
+                  <td rowspan="3">Sistem kelistrikan (penerangan, stopkontak)</td>
+                  <td>Instalasi rapi, aman, semua titik berfungsi.</td>
+                  <td rowspan="3">30</td>
+                  <td>3</td>
+                  <td rowspan="3">
                     <div class="dropdown-container">
                       <div class="custom-dropdown" data-id="dropdown10">
                         <div class="dropdown-select">
@@ -412,30 +444,33 @@
                           <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="dropdown-options">
-                          <div class="dropdown-option option-1" data-value="kurang baik">Kurang Baik</div>
-                          <div class="dropdown-option option-2" data-value="cukup baik">Cukup Baik</div>
-                          <div class="dropdown-option option-3" data-value="baik">Baik</div>
-                          <div class="dropdown-option option-4" data-value="sangat baik">Sangat Baik</div>
+                          <div class="dropdown-option option-1" data-value="cukup baik">1</div>
+                          <div class="dropdown-option option-2" data-value="baik">2</div>
+                          <div class="dropdown-option option-3" data-value="sangat baik">3</div>
                         </div>
                       </div>
                     </div>
                   </td>
-                  <td>
-                    <button type="button" class="note-btn" title="Tambahkan catatan">
-                      <i class="fas fa-sticky-note"></i>
-                    </button>
-                  </td>
+                  <td rowspan="3" id="bobotEval10">bobot eval</td>
+                  <td rowspan="12" id="bobotPenilaian3">bobot penilaian</td>
+                  <td rowspan="12" id="kategoriNilai3">kategori</td>
+                  <td rowspan="12" id="nilaiAkhir3">Nilai Akhir</td>
                 </tr>
+                <td>Ada titik bermasalah (lampu mati, stopkontak rusak), sebagian masih berfungsi</td>
+                <td>2</td>
                 <tr>
-                  <td>2</td>
-                  <td>Drainase terhubung dengan sistem drainase perkotaan mengalir dengan baik</td>
-                  <td>
-                    <ul class="doc-list">
-                      <li>Dokumentasi pemanfaatan</li>
-                      <li>Gambar terlaksana (as built drawings)</li>
-                    </ul>
-                  </td>
-                  <td>
+                  <td>Instalasi rusak total, listrik padam/tidak berfungsi.</td>
+                  <td>1</td>
+                </tr>
+
+
+                <tr>
+                  <td rowspan="3">2</td>
+                  <td rowspan="3">Sistem Air Bersih</td>
+                  <td>Air lancar, tersedia di seluruh titik, kualitas baik.</td>
+                  <td rowspan="3">20</td>
+                  <td>3</td>
+                  <td rowspan="3">
                     <div class="dropdown-container">
                       <div class="custom-dropdown" data-id="dropdown11">
                         <div class="dropdown-select">
@@ -443,31 +478,30 @@
                           <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="dropdown-options">
-                          <div class="dropdown-option option-1" data-value="kurang baik">Kurang Baik</div>
-                          <div class="dropdown-option option-2" data-value="cukup baik">Cukup Baik</div>
-                          <div class="dropdown-option option-3" data-value="baik">Baik</div>
-                          <div class="dropdown-option option-4" data-value="sangat baik">Sangat Baik</div>
+                          <div class="dropdown-option option-1" data-value="cukup baik">1</div>
+                          <div class="dropdown-option option-2" data-value="baik">2</div>
+                          <div class="dropdown-option option-3" data-value="sangat baik">3</div>
                         </div>
                       </div>
                     </div>
                   </td>
-                  <td>
-                    <button type="button" class="note-btn" title="Tambahkan catatan">
-                      <i class="fas fa-sticky-note"></i>
-                    </button>
-                  </td>
+                  <td rowspan="3" id="bobotEval11">bobot eval</td>
                 </tr>
+                <td>Debit air berkurang, ada kebocoran kecil, distribusi terbatas.</td>
+                <td>2</td>
                 <tr>
+                  <td>Air tidak mengalir, pompa rusak, pipa bocor parah.</td>
+                  <td>1</td>
+                </tr>
+
+
+                <tr>
+                  <td rowspan="3">3</td>
+                  <td rowspan="3">Sistem Air Bekas (Grey Water)</td>
+                  <td>Berfungsi optimal, tidak ada kebocoran, aliran lancar</td>
+                  <td rowspan="3">10</td>
                   <td>3</td>
-                  <td>Kualitas konstruksi drainase terjaga/sesuai dengan prencanaan</td>
-                  <td>
-                    <ul class="doc-list">
-                      <li>Dokumentasi terbangun</li>
-                      <li>Gambar terlaksana (as built drawings)</li>
-                      <li>Laporan hasil pengawasan</li>
-                    </ul>
-                  </td>
-                  <td>
+                  <td rowspan="3">
                     <div class="dropdown-container">
                       <div class="custom-dropdown" data-id="dropdown12">
                         <div class="dropdown-select">
@@ -475,36 +509,30 @@
                           <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="dropdown-options">
-                          <div class="dropdown-option option-1" data-value="kurang baik">Kurang Baik</div>
-                          <div class="dropdown-option option-2" data-value="cukup baik">Cukup Baik</div>
-                          <div class="dropdown-option option-3" data-value="baik">Baik</div>
-                          <div class="dropdown-option option-4" data-value="sangat baik">Sangat Baik</div>
+                          <div class="dropdown-option option-1" data-value="cukup baik">1</div>
+                          <div class="dropdown-option option-2" data-value="baik">2</div>
+                          <div class="dropdown-option option-3" data-value="sangat baik">3</div>
                         </div>
                       </div>
                     </div>
                   </td>
-                  <td>
-                    <button type="button" class="note-btn" title="Tambahkan catatan">
-                      <i class="fas fa-sticky-note"></i>
-                    </button>
-                  </td>
+                  <td rowspan="3" id="bobotEval12">bobot eval</td>
                 </tr>
-                <!-- Section 4 -->
-                <tr class="section-title">
-                  <th colspan="5" style="background-color: aliceblue;">
-                    <i class="fas fa-water"></i>
-                    Sistem Penyediaan Air Minum
-                  </th>
-                </tr>
+                <td>Ada gangguan ringan, masih bisa berfungsi dengan perbaikan kecil</td>
+                <td>2</td>
                 <tr>
+                  <td>Tidak berfungsi, aliran terhambat atau bocor parah</td>
                   <td>1</td>
-                  <td>Kondisi prasarana air minum terjaga dan berfungsi</td>
-                  <td>
-                    <ul class="doc-list">
-                      <li>Dokumentasi pemanfaatan</li>
-                    </ul>
-                  </td>
-                  <td>
+                </tr>
+
+
+                <tr>
+                  <td rowspan="3">4</td>
+                  <td rowspan="3">Sistem Air Kotor (Black Water)</td>
+                  <td>Saluran lancar, tidak ada sumbatan, tidak menimbulkan bau</td>
+                  <td rowspan="3">20</td>
+                  <td>3</td>
+                  <td rowspan="3">
                     <div class="dropdown-container">
                       <div class="custom-dropdown" data-id="dropdown13">
                         <div class="dropdown-select">
@@ -512,28 +540,29 @@
                           <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="dropdown-options">
-                          <div class="dropdown-option option-1" data-value="kurang baik">Kurang Baik</div>
-                          <div class="dropdown-option option-2" data-value="cukup baik">Cukup Baik</div>
-                          <div class="dropdown-option option-3" data-value="baik">Baik</div>
-                          <div class="dropdown-option option-4" data-value="sangat baik">Sangat Baik</div>
+                          <div class="dropdown-option option-1" data-value="cukup baik">1</div>
+                          <div class="dropdown-option option-2" data-value="baik">2</div>
+                          <div class="dropdown-option option-3" data-value="sangat baik">3</div>
                         </div>
                       </div>
                     </div>
                   </td>
-                  <td>
-                    <button type="button" class="note-btn" title="Tambahkan catatan">
-                      <i class="fas fa-sticky-note"></i>
-                    </button>
-                  </td>
+                  <td rowspan="3" id="bobotEval13">bobot eval</td>
                 </tr>
+                <td>Ada sumbatan sebagian, aliran lambat, perlu perawatan</td>
+                <td>2</td>
                 <tr>
-                  <td>2</td>
-                  <td>Akses air minum yang mampu melayani kebutuhan penerima manfaat</td>
-                  <td>
-                    <ul class="doc-list">
-                    </ul>
-                  </td>
-                  <td>
+                  <td>Tidak berfungsi, saluran tersumbat total</td>
+                  <td>1</td>
+                </tr>
+
+                <tr>
+                  <td rowspan="3">5</td>
+                  <td rowspan="3">Sistem Sirkulasi Udara</td>
+                  <td>Ventilasi/AC berfungsi baik, udara segar dan sehat</td>
+                  <td rowspan="3">20</td>
+                  <td>3</td>
+                  <td rowspan="3">
                     <div class="dropdown-container">
                       <div class="custom-dropdown" data-id="dropdown14">
                         <div class="dropdown-select">
@@ -541,28 +570,41 @@
                           <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="dropdown-options">
-                          <div class="dropdown-option option-1" data-value="kurang baik">Kurang Baik</div>
-                          <div class="dropdown-option option-2" data-value="cukup baik">Cukup Baik</div>
-                          <div class="dropdown-option option-3" data-value="baik">Baik</div>
-                          <div class="dropdown-option option-4" data-value="sangat baik">Sangat Baik</div>
+                          <div class="dropdown-option option-1" data-value="cukup baik">1</div>
+                          <div class="dropdown-option option-2" data-value="baik">2</div>
+                          <div class="dropdown-option option-3" data-value="sangat baik">3</div>
                         </div>
                       </div>
                     </div>
                   </td>
-                  <td>
-                    <button type="button" class="note-btn" title="Tambahkan catatan">
-                      <i class="fas fa-sticky-note"></i>
-                    </button>
+                  <td rowspan="3" id="bobotEval14">bobot eval</td>
+                </tr>
+                <td>Aliran udara terbatas, kurang nyaman</td>
+                <td>2</td>
+                <tr>
+                  <td>Tidak berfungsi, udara pengap</td>
+                  <td>1</td>
+                </tr>
+
+
+                <!-- Section 2 -->
+                <tr class="section-title">
+                  <th colspan="9" style="background-color: aliceblue;">
+                    <i class="fas fa-building"></i>
+                    Kondisi Jalan
+                  </th>
+                  <td> nilai akhir section
                   </td>
                 </tr>
+
                 <tr>
+                  <td rowspan="3">a</td>
+                  <td rowspan="3">Kualitas struktur dan permukaan jalan</td>
+                  <td>Permukaan jalan rata, mantap, tidak berlubang sampai dengan berlubang sedikit, nyaman dilalui,
+                    struktur baik (jalan / jembatan)</td>
+                  <td rowspan="3">40</td>
                   <td>3</td>
-                  <td>Kualitas/mutu air yang memenuhi syarat</td>
-                  <td>
-                    <ul class="doc-list">
-                    </ul>
-                  </td>
-                  <td>
+                  <td rowspan="3">
                     <div class="dropdown-container">
                       <div class="custom-dropdown" data-id="dropdown15">
                         <div class="dropdown-select">
@@ -570,38 +612,34 @@
                           <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="dropdown-options">
-                          <div class="dropdown-option option-1" data-value="kurang baik">Kurang Baik</div>
-                          <div class="dropdown-option option-2" data-value="cukup baik">Cukup Baik</div>
-                          <div class="dropdown-option option-3" data-value="baik">Baik</div>
-                          <div class="dropdown-option option-4" data-value="sangat baik">Sangat Baik</div>
+                          <div class="dropdown-option option-1" data-value="cukup baik">1</div>
+                          <div class="dropdown-option option-2" data-value="baik">2</div>
+                          <div class="dropdown-option option-3" data-value="sangat baik">3</div>
                         </div>
                       </div>
                     </div>
                   </td>
-                  <td>
-                    <button type="button" class="note-btn" title="Tambahkan catatan">
-                      <i class="fas fa-sticky-note"></i>
-                    </button>
-                  </td>
+                  <td rowspan="3" id="bobotEval15">bobot eval</td>
+                  <td rowspan="9" id="bobotPenilaian4">bobot penilaian</td>
+                  <td rowspan="9" id="kategoriNilai4">kategori</td>
+                  <td rowspan="9" id="nilaiAkhir4">Nilai Akhir</td>
                 </tr>
-                <!-- Section 5 -->
-                <tr class="section-title">
-                  <th colspan="5" style="background-color: aliceblue;">
-                    <i class="fas fa-recycle"></i>
-                    Pengelolaan Sampah
-                  </th>
-                </tr>
+                <td>Terdapat kerusakan ringan seperti retak-retak atau lubang kecil, sebagian besar berlubang, masih
+                  dapat dilalui, struktur rusak sebagian (kecuali struktur utama)</td>
+                <td>2</td>
                 <tr>
+                  <td>Banyak lubang/retak besar, permukaan rusak berat, sulit dilalui, struktur rusak seluruhnya</td>
                   <td>1</td>
-                  <td>Tersedianya pewadahan/tempat sampah yang difasilitasi dengan sarana pengumpulan dan pengangkutan
-                  </td>
-                  <td>
-                    <ul class="doc-list">
-                      <li>Dokumentasi pemanfaatan</li>
-                      <li>Gambar terlaksana (as built drawings)</li>
-                    </ul>
-                  </td>
-                  <td>
+                </tr>
+
+
+                <tr>
+                  <td rowspan="3">b</td>
+                  <td rowspan="3">Aksesibilitas Jalan</td>
+                  <td>Jalan mudah diakses oleh pengguna sesuai peruntukan, konektivitas baik.</td>
+                  <td rowspan="3">40</td>
+                  <td>3</td>
+                  <td rowspan="3">
                     <div class="dropdown-container">
                       <div class="custom-dropdown" data-id="dropdown16">
                         <div class="dropdown-select">
@@ -609,30 +647,31 @@
                           <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="dropdown-options">
-                          <div class="dropdown-option option-1" data-value="kurang baik">Kurang Baik</div>
-                          <div class="dropdown-option option-2" data-value="cukup baik">Cukup Baik</div>
-                          <div class="dropdown-option option-3" data-value="baik">Baik</div>
-                          <div class="dropdown-option option-4" data-value="sangat baik">Sangat Baik</div>
+                          <div class="dropdown-option option-1" data-value="cukup baik">1</div>
+                          <div class="dropdown-option option-2" data-value="baik">2</div>
+                          <div class="dropdown-option option-3" data-value="sangat baik">3</div>
                         </div>
                       </div>
                     </div>
                   </td>
-                  <td>
-                    <button type="button" class="note-btn" title="Tambahkan catatan">
-                      <i class="fas fa-sticky-note"></i>
-                    </button>
-                  </td>
+                  <td rowspan="3" id="bobotEval16">bobot eval</td>
                 </tr>
+                <td>Sebagian jalur bisa dilalui, namun ada hambatan (sempit, tidak beraspal merata, atau terputus
+                  sebagian).</td>
+                <td>2</td>
                 <tr>
-                  <td>2</td>
-                  <td>Sistem pengelolaan persampahan berfungsi sesuai dengan rencana</td>
-                  <td>
-                    <ul class="doc-list">
-                      <li>Dokumentasi pemanfaatan</li>
-                      <li>Gambar terlaksana (as built drawings)</li>
-                    </ul>
-                  </td>
-                  <td>
+                  <td>Jalan sulit diakses, tidak bisa dilalui kendaraan, atau terputus total.</td>
+                  <td>1</td>
+                </tr>
+
+
+                <tr>
+                  <td rowspan="3">c</td>
+                  <td rowspan="3">Kebersihan jalan</td>
+                  <td>Jalan terjaga kebersihannya, bebas sampah, debu, dan lumpur.</td>
+                  <td rowspan="3">20</td>
+                  <td>3</td>
+                  <td rowspan="3">
                     <div class="dropdown-container">
                       <div class="custom-dropdown" data-id="dropdown17">
                         <div class="dropdown-select">
@@ -640,30 +679,39 @@
                           <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="dropdown-options">
-                          <div class="dropdown-option option-1" data-value="kurang baik">Kurang Baik</div>
-                          <div class="dropdown-option option-2" data-value="cukup baik">Cukup Baik</div>
-                          <div class="dropdown-option option-3" data-value="baik">Baik</div>
-                          <div class="dropdown-option option-4" data-value="sangat baik">Sangat Baik</div>
+                          <div class="dropdown-option option-1" data-value="cukup baik">1</div>
+                          <div class="dropdown-option option-2" data-value="baik">2</div>
+                          <div class="dropdown-option option-3" data-value="sangat baik">3</div>
                         </div>
                       </div>
                     </div>
                   </td>
-                  <td>
-                    <button type="button" class="note-btn" title="Tambahkan catatan">
-                      <i class="fas fa-sticky-note"></i>
-                    </button>
+                  <td rowspan="3" id="bobotEval17">bobot eval</td>
+                </tr>
+                <td>Jalan agak kotor, ada sampah/daun/lumpur di beberapa titik.</td>
+                <td>2</td>
+                <tr>
+                  <td>Jalan sangat kotor, banyak sampah/sedimen menumpuk, tidak terawat.</td>
+                  <td>1</td>
+                </tr>
+
+                <!-- Section 3 -->
+                <tr class="section-title">
+                  <th colspan="9" style="background-color: aliceblue;">
+                    <i class="fas fa-building"></i>
+                    Kondisi Drainase
+                  </th>
+                  <td> nilai akhir section
                   </td>
                 </tr>
+
                 <tr>
+                  <td rowspan="3">a</td>
+                  <td rowspan="3">Kondisi Fisik Saluran</td>
+                  <td>Saluran terbangun permanen, konstruksi kokoh, tidak ada kerusakan.</td>
+                  <td rowspan="3">40</td>
                   <td>3</td>
-                  <td>Kondisi Prasarana dan Sarana Persampahan yang memenuhi persyaratan teknis</td>
-                  <td>
-                    <ul class="doc-list">
-                      <li>Dokumentasi pemanfaatan</li>
-                      <li>Gambar terlaksana (as built drawings)</li>
-                    </ul>
-                  </td>
-                  <td>
+                  <td rowspan="3">
                     <div class="dropdown-container">
                       <div class="custom-dropdown" data-id="dropdown18">
                         <div class="dropdown-select">
@@ -671,29 +719,34 @@
                           <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="dropdown-options">
-                          <div class="dropdown-option option-1" data-value="kurang baik">Kurang Baik</div>
-                          <div class="dropdown-option option-2" data-value="cukup baik">Cukup Baik</div>
-                          <div class="dropdown-option option-3" data-value="baik">Baik</div>
-                          <div class="dropdown-option option-4" data-value="sangat baik">Sangat Baik</div>
+                          <div class="dropdown-option option-1" data-value="cukup baik">1</div>
+                          <div class="dropdown-option option-2" data-value="baik">2</div>
+                          <div class="dropdown-option option-3" data-value="sangat baik">3</div>
                         </div>
                       </div>
                     </div>
                   </td>
-                  <td>
-                    <button type="button" class="note-btn" title="Tambahkan catatan">
-                      <i class="fas fa-sticky-note"></i>
-                    </button>
-                  </td>
+                  <td rowspan="3" id="bobotEval18">bobot eval</td>
+                  <td rowspan="9" id="bobotPenilaian5">bobot penilaian</td>
+                  <td rowspan="9" id="kategoriNilai5">kategori</td>
+                  <td rowspan="9" id="nilaiAkhir5">Nilai Akhir</td>
                 </tr>
+                <td>Ada kerusakan ringan (retak/penurunan), masih dapat berfungsi.</td>
+                <td>2</td>
                 <tr>
-                  <td>4</td>
-                  <td>Seluruh area pada kawasan strategis terbangun tidak tercemar sampah</td>
-                  <td>
-                    <ul class="doc-list">
-                      <li>Dokumentasi pemanfaatan</li>
-                    </ul>
-                  </td>
-                  <td>
+                  <td>Rusak berat/runtuh, tidak ada saluran fisik yang layak.</td>
+                  <td>1</td>
+                </tr>
+
+
+                <tr>
+                  <td rowspan="3">b</td>
+                  <td rowspan="3">Konektivitas Saluran</td>
+                  <td>Tersambung baik ke saluran induk/utama, aliran terintegrasi (dapat teralirkan dan tidak
+                    menimbulkan banjir)</td>
+                  <td rowspan="3">40</td>
+                  <td>3</td>
+                  <td rowspan="3">
                     <div class="dropdown-container">
                       <div class="custom-dropdown" data-id="dropdown19">
                         <div class="dropdown-select">
@@ -701,36 +754,30 @@
                           <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="dropdown-options">
-                          <div class="dropdown-option option-1" data-value="kurang baik">Kurang Baik</div>
-                          <div class="dropdown-option option-2" data-value="cukup baik">Cukup Baik</div>
-                          <div class="dropdown-option option-3" data-value="baik">Baik</div>
-                          <div class="dropdown-option option-4" data-value="sangat baik">Sangat Baik</div>
+                          <div class="dropdown-option option-1" data-value="cukup baik">1</div>
+                          <div class="dropdown-option option-2" data-value="baik">2</div>
+                          <div class="dropdown-option option-3" data-value="sangat baik">3</div>
                         </div>
                       </div>
                     </div>
                   </td>
-                  <td>
-                    <button type="button" class="note-btn" title="Tambahkan catatan">
-                      <i class="fas fa-sticky-note"></i>
-                    </button>
-                  </td>
+                  <td rowspan="3" id="bobotEval19">bobot eval</td>
                 </tr>
-                <!-- Section 6 -->
-                <tr class="section-title">
-                  <th colspan="5" style="background-color: aliceblue;">
-                    <i class="fas fa-fire"></i>
-                    Pengelolaan Proteksi Kebakaran
-                  </th>
-                </tr>
+                <td>Sebagian tersambung, namun ada beberapa segmen yang terputus tetapi masih dapat mengalir</td>
+                <td>2</td>
                 <tr>
+                  <td>Tidak ada keterhubungan, saluran terputus, aliran terhenti di semua titik.</td>
                   <td>1</td>
-                  <td>Kondisi sarana dan prasarana proteksi kebakaran terpasang dan berfungsi dengan baik</td>
-                  <td>
-                    <ul class="doc-list">
-                      <li>Dokumentasi pemanfaatan</li>
-                    </ul>
-                  </td>
-                  <td>
+                </tr>
+
+
+                <tr>
+                  <td rowspan="3">c</td>
+                  <td rowspan="3">Kebersihan Saluran</td>
+                  <td>Saluran bersih, bebas dari sampah, sedimen, atau lumpur.</td>
+                  <td rowspan="3">20</td>
+                  <td>3</td>
+                  <td rowspan="3">
                     <div class="dropdown-container">
                       <div class="custom-dropdown" data-id="dropdown20">
                         <div class="dropdown-select">
@@ -738,30 +785,40 @@
                           <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="dropdown-options">
-                          <div class="dropdown-option option-1" data-value="kurang baik">Kurang Baik</div>
-                          <div class="dropdown-option option-2" data-value="cukup baik">Cukup Baik</div>
-                          <div class="dropdown-option option-3" data-value="baik">Baik</div>
-                          <div class="dropdown-option option-4" data-value="sangat baik">Sangat Baik</div>
+                          <div class="dropdown-option option-1" data-value="cukup baik">1</div>
+                          <div class="dropdown-option option-2" data-value="baik">2</div>
+                          <div class="dropdown-option option-3" data-value="sangat baik">3</div>
                         </div>
                       </div>
                     </div>
                   </td>
-                  <td>
-                    <button type="button" class="note-btn" title="Tambahkan catatan">
-                      <i class="fas fa-sticky-note"></i>
-                    </button>
+                  <td rowspan="3" id="bobotEval20">bobot eval</td>
+                </tr>
+                <td>Ada banyak sampah/sedimen, namun masih bisa mengalir.</td>
+                <td>2</td>
+                <tr>
+                  <td>Saluran penuh sampah/sedimen, mampet, tidak berfungsi.</td>
+                  <td>1</td>
+                </tr>
+
+                <!-- Section 4 -->
+                <tr class="section-title">
+                  <th colspan="9" style="background-color: aliceblue;">
+                    <i class="fas fa-building"></i>
+                    Kondisi Pengelolaan Sampah
+                  </th>
+                  <td> nilai akhir section
                   </td>
                 </tr>
+
                 <tr>
-                  <td>2</td>
-                  <td>Mutu dan kualitas proteksi kebakaran sesuai dengan perencanaan</td>
-                  <td>
-                    <ul class="doc-list">
-                      <li>Dokumentasi pemanfaatan</li>
-                      <li>Gambar terlaksana (as built drawings)</li>
-                    </ul>
+                  <td rowspan="3">a</td>
+                  <td rowspan="3">Kondisi prasarana dan sarana persampahan</td>
+                  <td>Sarana persampahan sesuai dengan yang terbangun, berfungsi baik, dan terpelihara secara rutin.
                   </td>
-                  <td>
+                  <td rowspan="3">60</td>
+                  <td>3</td>
+                  <td rowspan="3">
                     <div class="dropdown-container">
                       <div class="custom-dropdown" data-id="dropdown21">
                         <div class="dropdown-select">
@@ -769,35 +826,35 @@
                           <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="dropdown-options">
-                          <div class="dropdown-option option-1" data-value="kurang baik">Kurang Baik</div>
-                          <div class="dropdown-option option-2" data-value="cukup baik">Cukup Baik</div>
-                          <div class="dropdown-option option-3" data-value="baik">Baik</div>
-                          <div class="dropdown-option option-4" data-value="sangat baik">Sangat Baik</div>
+                          <div class="dropdown-option option-1" data-value="cukup baik">1</div>
+                          <div class="dropdown-option option-2" data-value="baik">2</div>
+                          <div class="dropdown-option option-3" data-value="sangat baik">3</div>
                         </div>
                       </div>
                     </div>
                   </td>
-                  <td>
-                    <button type="button" class="note-btn" title="Tambahkan catatan">
-                      <i class="fas fa-sticky-note"></i>
-                    </button>
-                  </td>
+                  <td rowspan="3" id="bobotEval21">bobot eval</td>
+                  <td rowspan="6" id="bobotPenilaian6">bobot penilaian</td>
+                  <td rowspan="6" id="kategoriNilai6">kategori</td>
+                  <td rowspan="6" id="nilaiAkhir6">Nilai Akhir</td>
                 </tr>
-                <!-- Section 7 -->
-                <tr class="section-title">
-                  <th colspan="5" style="background-color: aliceblue;">
-                    <i class="fas fa-seedling"></i>
-                    Kondisi Ruang Terbuka Hijau/Ruang Terbuka Publik
-                  </th>
+                <td>Sebagian sarana masih berfungsi tetapi ada kerusakan ringan dan pemeliharaan tidak teratur / hilang
+                  sebagian</td>
+                <td>2</td>
                 <tr>
+                  <td>Sebagian besar sarana rusak/tidak berfungsi, tidak sesuai standar teknis, dan tidak terpelihara /
+                    hilang seluruhnya</td>
                   <td>1</td>
-                  <td>RTH/RTP berfungsi dengan baik oleh penerima manfaat</td>
-                  <td>
-                    <ul class="doc-list">
-                      <li>Dokumentasi pemanfaatan</li>
-                    </ul>
-                  </td>
-                  <td>
+                </tr>
+
+
+                <tr>
+                  <td rowspan="3">b</td>
+                  <td rowspan="3">Pengumpulan dan pengangkutan</td>
+                  <td>Pewadahan didukung dengan sarana pengumpulan serta pengangkutan terjadwal.</td>
+                  <td rowspan="3">40</td>
+                  <td>3</td>
+                  <td rowspan="3">
                     <div class="dropdown-container">
                       <div class="custom-dropdown" data-id="dropdown22">
                         <div class="dropdown-select">
@@ -805,30 +862,42 @@
                           <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="dropdown-options">
-                          <div class="dropdown-option option-1" data-value="kurang baik">Kurang Baik</div>
-                          <div class="dropdown-option option-2" data-value="cukup baik">Cukup Baik</div>
-                          <div class="dropdown-option option-3" data-value="baik">Baik</div>
-                          <div class="dropdown-option option-4" data-value="sangat baik">Sangat Baik</div>
+                          <div class="dropdown-option option-1" data-value="cukup baik">1</div>
+                          <div class="dropdown-option option-2" data-value="baik">2</div>
+                          <div class="dropdown-option option-3" data-value="sangat baik">3</div>
                         </div>
                       </div>
                     </div>
                   </td>
-                  <td>
-                    <button type="button" class="note-btn" title="Tambahkan catatan">
-                      <i class="fas fa-sticky-note"></i>
-                    </button>
+                  <td rowspan="3" id="bobotEval22">bobot eval</td>
+                </tr>
+                <td>Pengangkutan tidak rutin sehingga area agak kotor dengan sampah di beberapa titik atau pembuangan
+                  liar kecil namun masih terkendali.</td>
+                <td>2</td>
+                <tr>
+                  <td>Pengumpulan dan pewadahan buruk dan area kotor dengan tumpukan sampah, terdapat pembuangan liar
+                  </td>
+                  <td>1</td>
+                </tr>
+
+                <!-- Section 5 -->
+                <tr class="section-title">
+                  <th colspan="9" style="background-color: aliceblue;">
+                    <i class="fas fa-building"></i>
+                    Kondisi Sistem Penyediaan Air Minum
+                  </th>
+                  <td> nilai akhir section
                   </td>
                 </tr>
+
                 <tr>
-                  <td>2</td>
-                  <td>Aksesibilitas pengelolaan RTH/RTP dapat diaksses dengan mudah oleh penerima manfaat</td>
-                  <td>
-                    <ul class="doc-list">
-                      <li>Dokumentasi pemanfaatan</li>
-                      <li>Gambar terlaksana (as built drawings)</li>
-                    </ul>
-                  </td>
-                  <td>
+                  <td rowspan="3">a</td>
+                  <td rowspan="3">Distribusi Air</td>
+                  <td>Air terdistribusi lancar sampai dengan titik pelayanan terjauh dan jaringan berfungsi baik,
+                    jaringan tidak mengalami kerusakan dan ketersedian air secara kontinu </td>
+                  <td rowspan="3">40</td>
+                  <td>3</td>
+                  <td rowspan="3">
                     <div class="dropdown-container">
                       <div class="custom-dropdown" data-id="dropdown23">
                         <div class="dropdown-select">
@@ -836,29 +905,35 @@
                           <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="dropdown-options">
-                          <div class="dropdown-option option-1" data-value="kurang baik">Kurang Baik</div>
-                          <div class="dropdown-option option-2" data-value="cukup baik">Cukup Baik</div>
-                          <div class="dropdown-option option-3" data-value="baik">Baik</div>
-                          <div class="dropdown-option option-4" data-value="sangat baik">Sangat Baik</div>
+                          <div class="dropdown-option option-1" data-value="cukup baik">1</div>
+                          <div class="dropdown-option option-2" data-value="baik">2</div>
+                          <div class="dropdown-option option-3" data-value="sangat baik">3</div>
                         </div>
                       </div>
                     </div>
                   </td>
-                  <td>
-                    <button type="button" class="note-btn" title="Tambahkan catatan">
-                      <i class="fas fa-sticky-note"></i>
-                    </button>
-                  </td>
+                  <td rowspan="3" id="bobotEval23">bobot eval</td>
+                  <td rowspan="9" id="bobotPenilaian7">bobot penilaian</td>
+                  <td rowspan="9" id="kategoriNilai7">kategori</td>
+                  <td rowspan="9" id="nilaiAkhir7">Nilai Akhir</td>
                 </tr>
+                <td>Distribusi air menjangkau sebagian area (kapasitas sumber air kurang / jaringan sebagian rusak /
+                  lainnya)</td>
+                <td>2</td>
                 <tr>
+                  <td>Distribusi air tidak berfungsi, sering terhenti, atau tidak menjangkau area (kapasitas sumber air
+                    tidak ada / jaringan rusak / lainnya)</td>
+                  <td>1</td>
+                </tr>
+
+
+                <tr>
+                  <td rowspan="3">b</td>
+                  <td rowspan="3">Kualitas Air</td>
+                  <td>Air jernih, tidak berbau, dan tidak berasa untuk kebutuhan rumah tangga.</td>
+                  <td rowspan="3">40</td>
                   <td>3</td>
-                  <td>Kondisi area RTH/RTP dapat diakses dengan mudah oleh penerima manfaat</td>
-                  <td>
-                    <ul class="doc-list">
-                      <li>Dokumentasi pemanfaatan</li>
-                    </ul>
-                  </td>
-                  <td>
+                  <td rowspan="3">
                     <div class="dropdown-container">
                       <div class="custom-dropdown" data-id="dropdown24">
                         <div class="dropdown-select">
@@ -866,29 +941,30 @@
                           <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="dropdown-options">
-                          <div class="dropdown-option option-1" data-value="kurang baik">Kurang Baik</div>
-                          <div class="dropdown-option option-2" data-value="cukup baik">Cukup Baik</div>
-                          <div class="dropdown-option option-3" data-value="baik">Baik</div>
-                          <div class="dropdown-option option-4" data-value="sangat baik">Sangat Baik</div>
+                          <div class="dropdown-option option-1" data-value="cukup baik">1</div>
+                          <div class="dropdown-option option-2" data-value="baik">2</div>
+                          <div class="dropdown-option option-3" data-value="sangat baik">3</div>
                         </div>
                       </div>
                     </div>
                   </td>
-                  <td>
-                    <button type="button" class="note-btn" title="Tambahkan catatan">
-                      <i class="fas fa-sticky-note"></i>
-                    </button>
-                  </td>
+                  <td rowspan="3" id="bobotEval24">bobot eval</td>
                 </tr>
+                <td>Air agak keruh/berbau ringan, masih dapat digunakan setelah pengolahan sederhana.</td>
+                <td>2</td>
                 <tr>
-                  <td>4</td>
-                  <td>Kualitas RTH/RTP bersih dan tidak terdapat sampah</td>
-                  <td>
-                    <ul class="doc-list">
-                      <li>Dokumentasi pemanfaatan</li>
-                    </ul>
-                  </td>
-                  <td>
+                  <td>Air keruh, berbau, tercemar, atau tidak layak digunakan.</td>
+                  <td>1</td>
+                </tr>
+
+
+                <tr>
+                  <td rowspan="3">c</td>
+                  <td rowspan="3">Ketersediaan Sarana Penampungan</td>
+                  <td>Tersedia sarana penampungan air memadai, terpelihara, dan berfungsi optimal.</td>
+                  <td rowspan="3">20</td>
+                  <td>3</td>
+                  <td rowspan="3">
                     <div class="dropdown-container">
                       <div class="custom-dropdown" data-id="dropdown25">
                         <div class="dropdown-select">
@@ -896,20 +972,288 @@
                           <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="dropdown-options">
-                          <div class="dropdown-option option-1" data-value="kurang baik">Kurang Baik</div>
-                          <div class="dropdown-option option-2" data-value="cukup baik">Cukup Baik</div>
-                          <div class="dropdown-option option-3" data-value="baik">Baik</div>
-                          <div class="dropdown-option option-4" data-value="sangat baik">Sangat Baik</div>
+                          <div class="dropdown-option option-1" data-value="cukup baik">1</div>
+                          <div class="dropdown-option option-2" data-value="baik">2</div>
+                          <div class="dropdown-option option-3" data-value="sangat baik">3</div>
                         </div>
                       </div>
                     </div>
                   </td>
-                  <td>
-                    <button type="button" class="note-btn" title="Tambahkan catatan">
-                      <i class="fas fa-sticky-note"></i>
-                    </button>
+                  <td rowspan="3" id="bobotEval25">bobot eval</td>
+                </tr>
+                <td>Sarana penampungan ada namun kapasitas terbatas atau kurang terpelihara.</td>
+                <td>2</td>
+                <tr>
+                  <td>Tidak ada atau sarana penampungan</td>
+                  <td>1</td>
+                </tr>
+
+                <!-- Section 6 -->
+                <tr class="section-title">
+                  <th colspan="9" style="background-color: aliceblue;">
+                    <i class="fas fa-building"></i>
+                    Kondisi Sistem Pengelolaan Air Limbah
+                  </th>
+                  <td> nilai akhir section
                   </td>
                 </tr>
+
+                <tr>
+                  <td rowspan="3">a</td>
+                  <td rowspan="3">Jaringan Pembuangan Limbah</td>
+                  <td>Saluran tertutup/rapi, tidak ada kebocoran, tidak mampet, air mengalir lancar.
+                  </td>
+                  <td rowspan="3">50</td>
+                  <td>3</td>
+                  <td rowspan="3">
+                    <div class="dropdown-container">
+                      <div class="custom-dropdown" data-id="dropdown26">
+                        <div class="dropdown-select">
+                          <span class="selected-value">Pilih</span>
+                          <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="dropdown-options">
+                          <div class="dropdown-option option-1" data-value="cukup baik">1</div>
+                          <div class="dropdown-option option-2" data-value="baik">2</div>
+                          <div class="dropdown-option option-3" data-value="sangat baik">3</div>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td rowspan="3" id="bobotEval26">bobot eval</td>
+                  <td rowspan="6" id="bobotPenilaian8">bobot penilaian</td>
+                  <td rowspan="6" id="kategoriNilai8">kategori</td>
+                  <td rowspan="6" id="nilaiAkhir8">Nilai Akhir</td>
+                </tr>
+                <td>Ada genangan, aliran sedikit tersumbat</td>
+                <td>2</td>
+                <tr>
+                  <td>Banyak kebocoran/genangan banyak, aliran tersumbat permanen, bau menyengat.</td>
+                  <td>1</td>
+                </tr>
+
+
+                <tr>
+                  <td rowspan="3">b</td>
+                  <td rowspan="3">Sarana Pengolahan Air Limbah</td>
+                  <td>Instalasi (IPAL / septik tank dan bangunan pelengkap) berfungsi, tidak bocor, tidak ada bau
+                    berlebihan.</td>
+                  <td rowspan="3">50</td>
+                  <td>3</td>
+                  <td rowspan="3">
+                    <div class="dropdown-container">
+                      <div class="custom-dropdown" data-id="dropdown27">
+                        <div class="dropdown-select">
+                          <span class="selected-value">Pilih</span>
+                          <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="dropdown-options">
+                          <div class="dropdown-option option-1" data-value="cukup baik">1</div>
+                          <div class="dropdown-option option-2" data-value="baik">2</div>
+                          <div class="dropdown-option option-3" data-value="sangat baik">3</div>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td rowspan="3" id="bobotEval27">bobot eval</td>
+                </tr>
+                <td>Kapasitas kecil, kadang overload, ada sedikit rembesan.</td>
+                <td>2</td>
+                <tr>
+                  <td>Instalasi tidak berfungsi sesuai fungsinya, limbah tidak terolah.
+                  </td>
+                  <td>1</td>
+                </tr>
+
+                <!-- Section 7 -->
+                <tr class="section-title">
+                  <th colspan="9" style="background-color: aliceblue;">
+                    <i class="fas fa-building"></i>
+                    RTH / RTHP / Infrastruktur Pendukung Kawasan
+                  </th>
+                  <td> nilai akhir section
+                  </td>
+                </tr>
+
+                <tr>
+                  <td rowspan="3">a</td>
+                  <td rowspan="3">Vegetasi (Tanaman, Pohon, Rumput)</td>
+                  <td>Tanaman tumbuh sehat, hijau / sedikit kering, terawat, tidak / sedikit yang mati.</td>
+                  <td rowspan="3">40</td>
+                  <td>3</td>
+                  <td rowspan="3">
+                    <div class="dropdown-container">
+                      <div class="custom-dropdown" data-id="dropdown28">
+                        <div class="dropdown-select">
+                          <span class="selected-value">Pilih</span>
+                          <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="dropdown-options">
+                          <div class="dropdown-option option-1" data-value="cukup baik">1</div>
+                          <div class="dropdown-option option-2" data-value="baik">2</div>
+                          <div class="dropdown-option option-3" data-value="sangat baik">3</div>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td rowspan="3" id="bobotEval28">bobot eval</td>
+                  <td rowspan="9" id="bobotPenilain9">bobot penilaian</td>
+                  <td rowspan="9" id="kategoriNila9">kategori</td>
+                  <td rowspan="9" id="nilaiAkhir9">Nilai Akhir</td>
+                </tr>
+                <td>Sebagian besar tanaman kering, banyak area gundul.</td>
+                <td>2</td>
+                <tr>
+                  <td>Keseluruhan tanaman mati, tidak ada perawatan.</td>
+                  <td>1</td>
+                </tr>
+
+
+                <tr>
+                  <td rowspan="3">b</td>
+                  <td rowspan="3">Kebersihan Area</td>
+                  <td>Area bersih, tidak ada sampah berserakan.</td>
+                  <td rowspan="3">30</td>
+                  <td>3</td>
+                  <td rowspan="3">
+                    <div class="dropdown-container">
+                      <div class="custom-dropdown" data-id="dropdown29">
+                        <div class="dropdown-select">
+                          <span class="selected-value">Pilih</span>
+                          <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="dropdown-options">
+                          <div class="dropdown-option option-1" data-value="cukup baik">1</div>
+                          <div class="dropdown-option option-2" data-value="baik">2</div>
+                          <div class="dropdown-option option-3" data-value="sangat baik">3</div>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td rowspan="3" id="bobotEval29">bobot eval</td>
+                </tr>
+                <td>Ada sampah kecil, belum rutin dibersihkan.</td>
+                <td>2</td>
+                <tr>
+                  <td>Banyak sampah/limbah menumpuk.</td>
+                  <td>1</td>
+                </tr>
+
+
+                <tr>
+                  <td rowspan="3">c</td>
+                  <td rowspan="3">Aksesibilitas & Kenyamanan</td>
+                  <td>Semua sarana berfungsi normal (lampu menyala, bangku layak, jalur evakuasi, struktur pendukung
+                    kawasan, dan lain-lain)</td>
+                  <td rowspan="3">30</td>
+                  <td>3</td>
+                  <td rowspan="3">
+                    <div class="dropdown-container">
+                      <div class="custom-dropdown" data-id="dropdown30">
+                        <div class="dropdown-select">
+                          <span class="selected-value">Pilih</span>
+                          <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="dropdown-options">
+                          <div class="dropdown-option option-1" data-value="cukup baik">1</div>
+                          <div class="dropdown-option option-2" data-value="baik">2</div>
+                          <div class="dropdown-option option-3" data-value="sangat baik">3</div>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td rowspan="3" id="bobotEval30">bobot eval</td>
+                </tr>
+                <td>Ada sebagian sarana tidak berfungsi.</td>
+                <td>2</td>
+                <tr>
+                  <td>Hampir semua sarana rusak/tidak bisa dipakai.</td>
+                  <td>1</td>
+                </tr>
+
+                <!-- Section 8 -->
+                <tr class="section-title">
+                  <th colspan="9" style="background-color: aliceblue;">
+                    <i class="fas fa-building"></i>
+                    Kondisi Sistem Proteksi Kebakaran
+                  </th>
+                  <td> nilai akhir section
+                  </td>
+                </tr>
+
+                <tr>
+                  <td rowspan="3">a</td>
+                  <td rowspan="3">Ketersediaan Sistem Proteksi Kebakaran</td>
+                  <td>Ketersediaan sistem proteksi kebakaran (APAR, hidran, sprinkler, dan lain-lain) tersedia sesuai
+                    standar teknis, terpelihara, dan berfungsi
+                  </td>
+                  <td rowspan="3">70</td>
+                  <td>3</td>
+                  <td rowspan="3">
+                    <div class="dropdown-container">
+                      <div class="custom-dropdown" data-id="dropdown31">
+                        <div class="dropdown-select">
+                          <span class="selected-value">Pilih</span>
+                          <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="dropdown-options">
+                          <div class="dropdown-option option-1" data-value="cukup baik">1</div>
+                          <div class="dropdown-option option-2" data-value="baik">2</div>
+                          <div class="dropdown-option option-3" data-value="sangat baik">3</div>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td rowspan="3" id="bobotEval31">bobot eval</td>
+                  <td rowspan="6" id="bobotPenilaian10">bobot penilaian</td>
+                  <td rowspan="6" id="kategoriNilai10">kategori</td>
+                  <td rowspan="6" id="nilaiAkhir10"></td>>Nilai Akhir</td>
+                </tr>
+                <td>Sistem proteksi kebakaran tersedia namun beberapa hilang / tidak berfungsi.</td>
+                <td>2</td>
+                <tr>
+                  <td>Sistem proteksi kebakaran seluruhnya hilang atau tidak dapat digunakan</td>
+                  <td>1</td>
+                </tr>
+
+
+                <tr>
+                  <td rowspan="3">b</td>
+                  <td rowspan="3">Sarana Akses dan Pencegahan Kebakaran</td>
+                  <td>Jalan kawasan cukup lebar, bebas hambatan, dan tersedia titik manuver kendaraan pemadam.</td>
+                  <td rowspan="3">30</td>
+                  <td>3</td>
+                  <td rowspan="3">
+                    <div class="dropdown-container">
+                      <div class="custom-dropdown" data-id="dropdown32">
+                        <div class="dropdown-select">
+                          <span class="selected-value">Pilih</span>
+                          <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="dropdown-options">
+                          <div class="dropdown-option option-1" data-value="cukup baik">1</div>
+                          <div class="dropdown-option option-2" data-value="baik">2</div>
+                          <div class="dropdown-option option-3" data-value="sangat baik">3</div>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td rowspan="3" id="bobotEval32">bobot eval</td>
+                </tr>
+                <td>Jalan tersedia tetapi sebagian sempit/terhalang sehingga sulit diakses</td>
+                <td>2</td>
+                <tr>
+                  <td>Tidak ada akses kendaraan pemadam ke area rawan kebakaran
+                  </td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td colspan="9"> Skor Total Infrastruktur Terbangun</td>
+                  <td>Skor akhir infra</td>
+                </tr>
+
+
+
               </tbody>
             </table>
           </form>
