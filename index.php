@@ -57,7 +57,7 @@ ob_start();
         </div>
     </div>
     <div class="overflow-hidden bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 flex flex-col gap-4">
-        <table class="block border-collapse border w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <table class="border-collapse border w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead class="hidden text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-200">
                 <tr>
                     <th class="border dark:border-gray-700 px-6 py-3" rowspan="2">No</th>
@@ -79,17 +79,38 @@ ob_start();
             </thead>
             <tbody>
                 <tr class="font-semibold">
-                    <td class="border dark:border-gray-700 px-6 py-3">a</td>
-                    <td class="border dark:border-gray-700 px-6 py-3" colspan="8">Struktur (40%)</td>
-                    <td class="border dark:border-gray-700 px-6 py-3">(Nilai Sub)</td>
+                    <td colspan="9" class="border dark:border-gray-700 px-6 py-3">A. Struktur (40%)</td>
+                    <td class="hidden border dark:border-gray-700 px-6 py-3">(Nilai Sub)</td>
                 </tr>
                 <tr>
-                    <td rowspan="3" class="border dark:border-gray-700 px-6 py-3">1</td>
-                    <td rowspan="3" class="border dark:border-gray-700 px-6 py-3">Kondisi Struktur Bawah (Fondasi)</td>
-                    <td class="border dark:border-gray-700 px-6 py-3">Tidak ada penurunan/retak, fondasi stabil.</td>
-                    <td rowspan="3" class="border dark:border-gray-700 px-6 py-3">30</td>
-                    <td class="border dark:border-gray-700 px-6 py-3">3</td>
-                    <td rowspan="3" class="border dark:border-gray-700 px-6 py-3">
+                    <td rowspan="3" class="hidden border border-collapse dark:border-gray-700 px-6 py-3">1</td>
+                    <td rowspan="3" class="block bg-gray-50 dark:bg-gray-700 dark:border-gray-700 px-6 py-3">
+                        <div class="flex justify-between font-bold ">
+                            <span>1. Kondisi Struktur Bawah (Fondasi)</span>
+                            <span class="text-xs">(Bobot 40%)</span>
+                        </div>
+                    </td>
+                    <td class="block border-t dark:border-gray-700 px-6 py-3">
+                        <div class="">
+                            <span class="inline-flex items-center justify-center h-6 w-6 rounded-full bg-green-500 font-bold text-white">3</span>
+                            <span>Tidak ada penurunan/retak, fondasi stabil.</span>
+                        </div>
+                    </td>
+                    <td class="block border-t dark:border-gray-700 px-6 py-3">
+                        <div class="">
+                            <span class="inline-flex items-center justify-center h-6 w-6 rounded-full bg-green-500 font-bold text-white">2</span>
+                            <span>Ada retakan kecil/penurunan sebagian namun masih aman digunakan.</span>
+                        </div>
+                    </td>
+                    <td class="block border-t dark:border-gray-700 px-6 py-3">
+                        <div class="">
+                            <span class="inline-flex items-center justify-center h-6 w-6 rounded-full bg-green-500 font-bold text-white">1</span>
+                            <span>Retak besar, penurunan signifikan, tidak mampu menahan beban.</span>
+                        </div>
+                    </td>
+                    <td rowspan="3" class="hidden border dark:border-gray-700 px-6 py-3">30</td>
+                    <td class="hidden border dark:border-gray-700 px-6 py-3">3</td>
+                    <td rowspan="3" class="block border-t dark:border-gray-700 px-6 py-3">
                         <select id="dropdown1" class="w-max bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             <option selected>Pilih</option>
                             <option value="1">1</option>
@@ -97,20 +118,69 @@ ob_start();
                             <option value="3">3</option>
                         </select>
                     </td>
-                    <td rowspan="3" class="border dark:border-gray-700 px-6 py-3">Bobot Eval</td>
-                    <td rowspan="12" class="border dark:border-gray-700 px-6 py-3">Total Bobot</td>
-                    <td rowspan="12" class="border dark:border-gray-700 px-6 py-3">Kategori</td>
-                    <td rowspan="12" class="border dark:border-gray-700 px-6 py-3">Nilai Akhir</td>
+                    <td rowspan="3" class="block border-t dark:border-gray-700 px-6 py-3">{Bobot Eval}</td>
+                    <td rowspan="12" class="hidden border dark:border-gray-700 px-6 py-3">Total Bobot</td>
+                    <td rowspan="12" class="hidden border dark:border-gray-700 px-6 py-3">Kategori</td>
+                    <td rowspan="12" class="hidden border dark:border-gray-700 px-6 py-3">Nilai Akhir</td>
                 </tr>
-                <tr>
+                <tr class="hidden">
                     <td class="border dark:border-gray-700 px-6 py-3">Ada retakan kecil/penurunan sebagian namun masih aman digunakan.</td>
                     <td class="border dark:border-gray-700 px-6 py-3">2</td>
                 </tr>
-                <tr>
+                <tr class="hidden">
                     <td class="border dark:border-gray-700 px-6 py-3">Retak besar, penurunan signifikan, tidak mampu menahan beban.</td>
                     <td class="border dark:border-gray-700 px-6 py-3">1</td>
                 </tr>
                 <tr>
+                    <td rowspan="3" class="hidden border border-collapse dark:border-gray-700 px-6 py-3">1</td>
+                    <td rowspan="3" class="block bg-gray-50 dark:bg-gray-700 dark:border-gray-700 px-6 py-3">
+                        <div class="flex justify-between font-bold ">
+                            <span>2. Kondisi Struktur Bawah (Fondasi)</span>
+                            <span class="text-xs">(Bobot 40%)</span>
+                        </div>
+                    </td>
+                    <td class="block border-t dark:border-gray-700 px-6 py-3">
+                        <div class="">
+                            <span class="inline-flex items-center justify-center h-6 w-6 rounded-full bg-green-500 font-bold text-white">3</span>
+                            <span>Tidak ada penurunan/retak, fondasi stabil.</span>
+                        </div>
+                    </td>
+                    <td class="block border-t dark:border-gray-700 px-6 py-3">
+                        <div class="">
+                            <span class="inline-flex items-center justify-center h-6 w-6 rounded-full bg-green-500 font-bold text-white">2</span>
+                            <span>Ada retakan kecil/penurunan sebagian namun masih aman digunakan.</span>
+                        </div>
+                    </td>
+                    <td class="block border-t dark:border-gray-700 px-6 py-3">
+                        <div class="">
+                            <span class="inline-flex items-center justify-center h-6 w-6 rounded-full bg-green-500 font-bold text-white">1</span>
+                            <span>Retak besar, penurunan signifikan, tidak mampu menahan beban.</span>
+                        </div>
+                    </td>
+                    <td rowspan="3" class="hidden border dark:border-gray-700 px-6 py-3">30</td>
+                    <td class="hidden border dark:border-gray-700 px-6 py-3">3</td>
+                    <td rowspan="3" class="block border-t dark:border-gray-700 px-6 py-3">
+                        <select id="dropdown1" class="w-max bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <option selected>Pilih</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                    </td>
+                    <td rowspan="3" class="block border-t dark:border-gray-700 px-6 py-3">{Bobot Eval}</td>
+                    <td rowspan="12" class="hidden border dark:border-gray-700 px-6 py-3">Total Bobot</td>
+                    <td rowspan="12" class="hidden border dark:border-gray-700 px-6 py-3">Kategori</td>
+                    <td rowspan="12" class="hidden border dark:border-gray-700 px-6 py-3">Nilai Akhir</td>
+                </tr>
+                <tr class="hidden">
+                    <td class="border dark:border-gray-700 px-6 py-3">Ada retakan kecil/penurunan sebagian namun masih aman digunakan.</td>
+                    <td class="border dark:border-gray-700 px-6 py-3">2</td>
+                </tr>
+                <tr class="hidden">
+                    <td class="border dark:border-gray-700 px-6 py-3">Retak besar, penurunan signifikan, tidak mampu menahan beban.</td>
+                    <td class="border dark:border-gray-700 px-6 py-3">1</td>
+                </tr>
+                <!-- <tr>
                     <td rowspan="3" class="border dark:border-gray-700 px-6 py-3">2</td>
                     <td rowspan="3" class="border dark:border-gray-700 px-6 py-3">Kondisi Struktur Atas (Kolom, Sloof, Balok, Pelat Lantai)</td>
                     <td class="border dark:border-gray-700 px-6 py-3">Tidak retak besar, tidak miring, tidak ada deformasi.</td>
@@ -157,11 +227,11 @@ ob_start();
                 <tr>
                     <td class="border dark:border-gray-700 px-6 py-3">Rangka goyah, roboh, atau terlepas dari struktur utama.</td>
                     <td class="border dark:border-gray-700 px-6 py-3">1</td>
-                </tr>
+                </tr> -->
             </tbody>
         </table>
     </div>
-    <div class="overflow-hidden bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 flex flex-col gap-4">
+    <div class="overflow-auto bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 flex flex-col gap-4">
         <table class="border-collapse border w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-200">
                 <tr>
