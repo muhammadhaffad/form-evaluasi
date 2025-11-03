@@ -1,5 +1,6 @@
 <?php
 require_once 'db.php';
+require_once 'utils.php';
 
 $stmt = $conn->prepare('select * from infrastruktur where id = :infrastruktur_id');
 $stmt->execute(['infrastruktur_id' => $_GET['id'] ?? 1]);
@@ -74,7 +75,7 @@ foreach ($infrastrukturEvaluasi as $section) {
 ob_start();
 ?>
 <div class="space-y-6">
-	<div class="p-2 border border-gray-200 dark:border-gray-700 rounded-lg grid grid-cols-1 gap-1 bg-white dark:bg-gray-700 dark:text-white" style="padding: 1rem 1.5rem;">
+	<div class="p-2 border-l-4! border-l-blue-500 border border-gray-200 dark:border-gray-700 rounded-lg grid grid-cols-1 gap-1 bg-white dark:bg-gray-700 dark:text-white" style="padding: 1rem 1.5rem;">
 		<h2 class="text-lg font-semibold"><?= $infrastruktur['nama_infra'] ?></h2>
 		<div class="flex gap-2">
 			<div class="flex gap-1 items-center">
@@ -95,7 +96,7 @@ ob_start();
 				<i class="fas fa-money-bill"></i>
 				Nilai Kontrak:
 			</div>
-			<p>Rp<?= number_format($infrastruktur['nilai_kontrak'], 0, ',', '.') ?></p>
+			<p>Rp<?= formatRupiahSingkat($infrastruktur['nilai_kontrak'], 0, ',', '.') ?></p>
 		</div>
 	</div>
 	<div class="overflow-auto bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 flex flex-col gap-4">
@@ -252,7 +253,7 @@ ob_start();
 			</tbody>
 		</table>
 	</div>
-	<div class="p-2 border border-gray-200 dark:border-gray-700 rounded-lg grid grid-cols-1 gap-1 bg-white dark:bg-gray-700 dark:text-white" style="padding: 1rem 1.5rem;">
+	<div class="p-2 border-l-4! border-l-blue-500 border border-gray-200 dark:border-gray-700 rounded-lg grid grid-cols-1 gap-1 bg-white dark:bg-gray-700 dark:text-white" style="padding: 1rem 1.5rem;">
 		<h2 class="text-lg font-bold">Kesimpulan Evaluasi</h2>
 		<span class="font-bold">Total Skor: <span class="font-bold">
 				<?= array_sum(array_column($infrastrukturEvaluasi, 'section_skor')) / count($infrastrukturEvaluasi) ?>/100

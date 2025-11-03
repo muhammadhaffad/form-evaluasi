@@ -3,6 +3,7 @@ require_once 'db.php';
 $title = 'Formulir Evaluasi Infrastruktur';
 $subtitle = 'Sistem Evaluasi Keberfungsian Kawasan Strategis Terbangun Jawa Timur';
 $active = 'index';
+$icon = 'clipboard-check';
 // Data Struktur (Data Dummy)
 $datas = [];
 
@@ -344,9 +345,16 @@ ob_start();
             .section_sub.find(d => d.section_sub_id == sectionSubId)
             .section_sub_skor = totalSkorIndikator;
 
+        const nilaiSubSection = data.find(d => d.section_id == sectionId)
+            .section_sub.find(d => d.section_sub_id == sectionSubId)
+            .indikator.map(d => ({
+                nilai: d.indikator_nilai,
+                id: d.indikator_id
+            }));
+
         const kategoriDecision = document.querySelector(`.section-sub-kategori-decision-${sectionId}-${sectionSubId}`).textContent;
-        const fn1 = new Function('x', kategoriDecision);
-        const [kategoriSectionSub, nilaiKategoriSectionSub] = fn1(totalSkorIndikator);
+        const fn1 = new Function('x', 'nilai_arr', kategoriDecision);
+        const [kategoriSectionSub, nilaiKategoriSectionSub] = fn1(totalSkorIndikator, nilaiSubSection);
         document.querySelectorAll(`.section-sub-kategori-${sectionId}-${sectionSubId}`).forEach(el => el.textContent = kategoriSectionSub);
         document.querySelectorAll(`.section-sub-result-${sectionId}-${sectionSubId}`).forEach(el => el.textContent = nilaiKategoriSectionSub);
         data.find(d => d.section_id == sectionId)

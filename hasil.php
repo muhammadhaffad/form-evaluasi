@@ -1,11 +1,21 @@
 <?php
 require_once 'db.php';
+require_once 'utils.php';
+
 $title = 'Hasil Evaluasi Infrastruktur';
 $subtitle = 'Analisis dan Ringkasan Data Evaluasi Infrastruktur Jawa Timur';
 $active = 'hasil';
+$icon = 'chart-line';
+
 $stmt = $conn->prepare('select * from infrastruktur');
 $stmt->execute();
 $infrastruktur = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$stmt = $conn->query('select count(*) as total from infrastruktur');
+$infrastrukturCount = $stmt->fetch(PDO::FETCH_ASSOC);
+$stmt = $conn->query('select distinct count(lokasi_infra) as total from infrastruktur');
+$infrastrukturLokasiCount = $stmt->fetch(PDO::FETCH_ASSOC);
+$stmt = $conn->query('select sum(nilai_kontrak) as total from infrastruktur');
+$infrastrukturNilaiKontrakCount = $stmt->fetch(PDO::FETCH_ASSOC);
 ob_start();
 ?>
 <div id="detail-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -35,6 +45,29 @@ ob_start();
     </div>
 </div>
 <div class="space-y-6">
+    <div class="grid grid-cols-3 gap-4">
+        <div class="bg-white border-l-4 border-l-blue-500! border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 flex flex-col items-center gap-4 p-4">
+            <i class="fas fa-building text-blue-500 text-4xl"></i>
+            <p class="dark:text-white text-4xl font-bold"><?= $infrastrukturCount['total'] ?></p>
+            <h3 class="font-semibold text-gray-900 dark:text-white">
+                Total Proyek
+            </h3>
+        </div>
+        <div class="bg-white border-l-4 border-l-blue-500! border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 flex flex-col items-center gap-4 p-4">
+            <i class="fas fa-map-marker-alt text-blue-500 text-4xl"></i>
+            <p class="dark:text-white text-4xl font-bold"><?= $infrastrukturLokasiCount['total'] ?></p>
+            <h3 class="font-semibold text-gray-900 dark:text-white">
+                Lokasi
+            </h3>
+        </div>
+        <div class="bg-white border-l-4 border-l-blue-500! border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 flex flex-col items-center gap-4 p-4">
+            <i class="fas fa-money-bill text-blue-500 text-4xl"></i>
+            <p class="dark:text-white text-4xl font-bold">Rp<?= formatRupiahSingkat($infrastrukturNilaiKontrakCount['total'] ?? 0, 0, ',', '.') ?></p>
+            <h3 class="font-semibold text-gray-900 dark:text-white">
+                Total Nilai Kontrak
+            </h3>
+        </div>
+    </div>
     <div class="overflow-auto bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 flex flex-col gap-4">
         <table class="border border-collapse w-full text-sm text-left rtl:text-right dark:text-gray-400">
             <thead class="text-xs [&_th]:uppercase [&_th]:text-white md:[&_th]:border [&_th]:border-blue-900 [&_th]:dark:border-gray-700 bg-blue-700 dark:bg-gray-700 dark:text-gray-200">
@@ -54,7 +87,7 @@ ob_start();
                         <td class="px-6 py-4"><?= $infrastruktur['lokasi_infra'] ?></td>
                         <td class="px-6 py-4"><?= date('d F Y', strtotime($infrastruktur['tahun_mulai'])) ?></td>
                         <td class="px-6 py-4"><?= date('d F Y', strtotime($infrastruktur['tahun_selesai'])) ?></td>
-                        <td class="px-6 py-4">Rp<?= number_format($infrastruktur['nilai_kontrak'], 0, ',', '.') ?></td>
+                        <td class="px-6 py-4">Rp<?= formatRupiahSingkat($infrastruktur['nilai_kontrak'], 0, ',', '.') ?></td>
                         <td class="px-6 py-4">
                             <div class="flex gap-1">
                                 <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm justify-center items-center text-center inline-flex dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 aspect-square w-8 h-8" onclick="showModal(<?= $infrastruktur['id'] ?>)" title="Lihat Detail" data-modal-target="detail-modal" data-modal-toggle="detail-modal">
