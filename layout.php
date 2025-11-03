@@ -7,28 +7,29 @@
     <title><?= $title ?? 'Formulir Evaluasi Infrastruktur' ?></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="./dist/style.css" rel="stylesheet">
+    <script src="./node_modules/flowbite/dist/flowbite.min.js"></script>
 </head>
 
 <body class="bg-gray-100">
     <main class="max-w-[1400px] w-full mx-auto p-5 space-y-4">
         <header>
-            <div class="rounded-2xl p-8 bg-gradient-to-r from-blue-700 to-blue-900 flex gap-4 items-center">
+            <div class="rounded-2xl p-8 bg-gradient-to-r from-blue-700 to-blue-900 flex flex-col md:flex-row  gap-4 items-center">
                 <div class="bg-white/30 rounded-full h-20 w-20 flex items-center justify-center">
                     <i class="fas fa-clipboard-check text-4xl text-white"></i>
                 </div>
-                <div class="flex flex-col gap-4">
-                    <h1 class="text-white text-4xl font-bold">Formulir Evaluasi Infrastruktur</h1>
-                    <p class="description text-white text-lg">Sistem Evaluasi Keberfungsian Kawasan Strategis Terbangun Jawa Timur</p>
+                <div class="flex flex-col gap-4 text-center">
+                    <h1 class="text-white text-4xl font-bold"><?= $title ?></h1>
+                    <p class="description text-white text-lg"><?= $subtitle ?></p>
                 </div>
             </div>
         </header>
         <nav>
-            <div class="p-2 shadow-lg rounded-lg flex gap-2 bg-white">
-                <button class="rounded-lg p-3 w-full bg-blue-800 hover:bg-blue-900 text-white font-bold flex items-center gap-2 justify-center" onclick="window.location.href='index.html'">
+            <div class="p-2 shadow-lg rounded-lg grid grid-cols-1 md:grid-cols-2 gap-2 bg-white dark:bg-gray-800">
+                <button type="button" class="<?= $active == 'index' ? 'flex items-center gap-2 justify-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800' : 'text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700' ?>" onclick="window.location.href='index.php'">
                     <i class="fas fa-clipboard-check"></i>
                     <span>Formulir Evaluasi</span>
                 </button>
-                <button class="rounded-lg p-3 w-full hover:bg-blue-100 font-bold flex items-center gap-2 justify-center" onclick="window.location.href='hasil2.html'">
+                <button type="button" class="<?= $active == 'hasil' ? 'flex items-center gap-2 justify-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800' : 'text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700' ?>" onclick="window.location.href='hasil.php'">
                     <i class="fas fa-chart-bar"></i>
                     <span>Hasil Evaluasi</span>
                 </button>

@@ -136,3 +136,28 @@ insert into indikator_kriteria (kriteria_nama, nilai, indikator_id) values ('Ret
 commit;
 /* uncomment rollback jika gagal */
 -- rollback;
+
+
+ALTER TABLE infrastruktur_evaluasi
+ADD CONSTRAINT fk_eval_infra
+FOREIGN KEY (infrastruktur_id)
+REFERENCES infrastruktur(id)
+ON DELETE CASCADE;
+
+ALTER TABLE infrastruktur_evaluasi_sub
+ADD CONSTRAINT fk_eval_sub_eval
+FOREIGN KEY (infrastruktur_evaluasi_id)
+REFERENCES infrastruktur_evaluasi(id)
+ON DELETE CASCADE;
+
+ALTER TABLE infrastruktur_evaluasi_sub_indikator
+ADD CONSTRAINT fk_eval_sub_indikator_sub
+FOREIGN KEY (infrastruktur_evaluasi_sub_id)
+REFERENCES infrastruktur_evaluasi_sub(id)
+ON DELETE CASCADE;
+
+ALTER TABLE infrastruktur_evaluasi_sub_indikator_kriteria
+ADD CONSTRAINT fk_eval_sub_indikator_kriteria_indikator
+FOREIGN KEY (infrastruktur_evaluasi_sub_indikator_id)
+REFERENCES infrastruktur_evaluasi_sub_indikator(id)
+ON DELETE CASCADE;

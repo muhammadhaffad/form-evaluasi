@@ -1,7 +1,7 @@
 <?php
 $host = "localhost";
 $user = "root";
-$pass = "";
+$pass = "root";
 $dbname = "evaluasi2"; // ganti sesuai nama database kamu
 
 try {

@@ -1,183 +1,75 @@
 <?php
+require_once 'db.php';
 $title = 'Formulir Evaluasi Infrastruktur';
+$subtitle = 'Sistem Evaluasi Keberfungsian Kawasan Strategis Terbangun Jawa Timur';
+$active = 'index';
 // Data Struktur (Data Dummy)
-$datas = [
-    [
-        'section_id' => 1,
-        'section_nama' => 'Kondisi Bangunan',
-        'section_kategori_decision' => "return x > 93.5 ? '(Berfungsi)' : x > 33 ? '(Kurang Berfungsi)' : '(Tidak Berfungsi)'",
+$datas = [];
+
+// ambil semua data
+$sections = $conn->query('SELECT * FROM section')->fetchAll(PDO::FETCH_ASSOC);
+$sectionSubs = $conn->query('SELECT * FROM section_sub')->fetchAll(PDO::FETCH_ASSOC);
+$indikators = $conn->query('SELECT * FROM indikator')->fetchAll(PDO::FETCH_ASSOC);
+$indikatorKriterias = $conn->query('SELECT * FROM indikator_kriteria')->fetchAll(PDO::FETCH_ASSOC);
+
+foreach ($sections as $section) {
+    $sectionItem = [
+        'section_id' => $section['id'],
+        'section_nama' => $section['section_nama'],
+        'section_kategori_decision' => $section['section_kategori_decision'],
         'section_skor' => 0,
         'section_skor_kategori' => '',
-        'section_sub' => [
-            [
-                'section_sub_id' => 1,
-                'section_sub_nama' => 'Struktur',
-                'section_sub_bobot' => 40,
-                'section_sub_kategori_decision' => "return x > 80 ? ['baik', 100] : x > 30 ? ['kurang baik', 50] : ['tidak baik', 0]",
+        'section_sub' => []
+    ];
+
+    foreach ($sectionSubs as $sectionSub) {
+        if ($sectionSub['section_id'] == $section['id']) {
+            $sectionSubItem = [
+                'section_sub_id' => $sectionSub['id'],
+                'section_sub_nama' => $sectionSub['section_sub_nama'],
+                'section_sub_bobot' => $sectionSub['section_sub_bobot'],
+                'section_sub_kategori_decision' => $sectionSub['section_sub_kategori_decision'],
                 'section_sub_skor' => 0,
                 'section_sub_skor_result' => 0,
                 'section_sub_skor_kategori' => '',
-                'indikator' => [
-                    [
-                        'indikator_id' => 1,
-                        'indikator_nama' => 'Kondisi Struktur Bawah (Fondasi)',
-                        'indikator_bobot' => 30,
+                'indikator' => []
+            ];
+
+            foreach ($indikators as $indikator) {
+                if ($indikator['section_sub_id'] == $sectionSub['id']) {
+                    $indikatorItem = [
+                        'indikator_id' => $indikator['id'],
+                        'indikator_nama' => $indikator['indikator_nama'],
+                        'indikator_bobot' => $indikator['indikator_bobot'],
                         'indikator_skor' => 0,
                         'indikator_nilai' => 0,
-                        'indikator_kriteria' => [
-                            [
-                                'id' => 1,
-                                'nama' => 'Tidak ada penurunan/retak, fondasi stabil.',
-                                'nilai' => 3
-                            ],
-                            [
-                                'id' => 2,
-                                'nama' => 'Ada retakan kecil/penurunan sebagian namun masih aman digunakan.',
-                                'nilai' => 2
-                            ],
-                            [
-                                'id' => 3,
-                                'nama' => 'Retak besar, penurunan signifikan, tidak mampu menahan beban.',
-                                'nilai' => 1
-                            ]
-                        ]
-                    ],
-                    [
-                        'indikator_id' => 2,
-                        'indikator_nama' => 'Kondisi Struktur Bawah (Fondasi)',
-                        'indikator_bobot' => 30,
-                        'indikator_skor' => 0,
-                        'indikator_nilai' => 0,
-                        'indikator_kriteria' => [
-                            [
-                                'id' => 4,
-                                'nama' => 'Tidak ada penurunan/retak, fondasi stabil.',
-                                'nilai' => 3
-                            ],
-                            [
-                                'id' => 5,
-                                'nama' => 'Ada retakan kecil/penurunan sebagian namun masih aman digunakan.',
-                                'nilai' => 2
-                            ],
-                            [
-                                'id' => 6,
-                                'nama' => 'Retak besar, penurunan signifikan, tidak mampu menahan beban.',
-                                'nilai' => 1
-                            ]
-                        ]
-                    ],
-                    [
-                        'indikator_id' => 3,
-                        'indikator_nama' => 'Kondisi Struktur Bawah (Fondasi)',
-                        'indikator_bobot' => 30,
-                        'indikator_skor' => 0,
-                        'indikator_nilai' => 0,
-                        'indikator_kriteria' => [
-                            [
-                                'id' => 7,
-                                'nama' => 'Tidak ada penurunan/retak, fondasi stabil.',
-                                'nilai' => 3
-                            ],
-                            [
-                                'id' => 8,
-                                'nama' => 'Ada retakan kecil/penurunan sebagian namun masih aman digunakan.',
-                                'nilai' => 2
-                            ],
-                            [
-                                'id' => 9,
-                                'nama' => 'Retak besar, penurunan signifikan, tidak mampu menahan beban.',
-                                'nilai' => 1
-                            ]
-                        ]
-                    ]
-                ]
-            ],
-            [
-                'section_sub_id' => 2,
-                'section_sub_nama' => 'Struktur',
-                'section_sub_bobot' => 40,
-                'section_sub_kategori_decision' => "return x > 80 ? ['baik', 100] : x > 40 ? ['kurang baik', 50] : ['tidak baik', 0]",
-                'section_sub_skor' => 0,
-                'section_sub_skor_result' => 0,
-                'section_sub_skor_kategori' => '',
-                'indikator' => [
-                    [
-                        'indikator_id' => 4,
-                        'indikator_nama' => 'Kondisi Struktur Bawah (Fondasi)',
-                        'indikator_bobot' => 30,
-                        'indikator_skor' => 0,
-                        'indikator_nilai' => 0,
-                        'indikator_kriteria' => [
-                            [
-                                'id' => 10,
-                                'nama' => 'Tidak ada penurunan/retak, fondasi stabil.',
-                                'nilai' => 3
-                            ],
-                            [
-                                'id' => 11,
-                                'nama' => 'Ada retakan kecil/penurunan sebagian namun masih aman digunakan.',
-                                'nilai' => 2
-                            ],
-                            [
-                                'id' => 12,
-                                'nama' => 'Retak besar, penurunan signifikan, tidak mampu menahan beban.',
-                                'nilai' => 1
-                            ]
-                        ]
-                    ],
-                    [
-                        'indikator_id' => 5,
-                        'indikator_nama' => 'Kondisi Struktur Bawah (Fondasi)',
-                        'indikator_bobot' => 30,
-                        'indikator_skor' => 0,
-                        'indikator_nilai' => 0,
-                        'indikator_kriteria' => [
-                            [
-                                'id' => 13,
-                                'nama' => 'Tidak ada penurunan/retak, fondasi stabil.',
-                                'nilai' => 3
-                            ],
-                            [
-                                'id' => 14,
-                                'nama' => 'Ada retakan kecil/penurunan sebagian namun masih aman digunakan.',
-                                'nilai' => 2
-                            ],
-                            [
-                                'id' => 15,
-                                'nama' => 'Retak besar, penurunan signifikan, tidak mampu menahan beban.',
-                                'nilai' => 1
-                            ]
-                        ]
-                    ],
-                    [
-                        'indikator_id' => 6,
-                        'indikator_nama' => 'Kondisi Struktur Bawah (Fondasi)',
-                        'indikator_bobot' => 30,
-                        'indikator_skor' => 0,
-                        'indikator_nilai' => 0,
-                        'indikator_kriteria' => [
-                            [
-                                'id' => 16,
-                                'nama' => 'Tidak ada penurunan/retak, fondasi stabil.',
-                                'nilai' => 3
-                            ],
-                            [
-                                'id' => 17,
-                                'nama' => 'Ada retakan kecil/penurunan sebagian namun masih aman digunakan.',
-                                'nilai' => 2
-                            ],
-                            [
-                                'id' => 18,
-                                'nama' => 'Retak besar, penurunan signifikan, tidak mampu menahan beban.',
-                                'nilai' => 1
-                            ]
-                        ]
-                    ]
-                ]
-            ]
-        ]
-    ],
-];
+                        'indikator_kriteria' => []
+                    ];
+
+                    foreach ($indikatorKriterias as $indikatorKriteria) {
+                        if ($indikatorKriteria['indikator_id'] == $indikator['id']) {
+                            $indikatorKriteriaItem = [
+                                'indikator_kriteria_id' => $indikatorKriteria['id'],
+                                'nilai' => $indikatorKriteria['nilai'],
+                                'id' => $indikatorKriteria['id'],
+                                'nama' => $indikatorKriteria['kriteria_nama']
+                            ];
+
+                            $indikatorItem['indikator_kriteria'][] = $indikatorKriteriaItem;
+                        }
+                    }
+
+                    $sectionSubItem['indikator'][] = $indikatorItem;
+                }
+            }
+
+            $sectionItem['section_sub'][] = $sectionSubItem;
+        }
+    }
+
+    $datas[] = $sectionItem;
+}
+
 ob_start();
 ?>
 <style>
@@ -215,14 +107,14 @@ ob_start();
                         <i class="fas fa-building"></i>
                         Nama Infrastruktur
                     </label>
-                    <input type="text" id="nama_infra" name="nama_infra" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  required />
+                    <input type="text" id="nama_infra" name="nama_infra" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                 </div>
                 <div>
                     <label for="lokasi_infra" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         <i class="fas fa-map-marker-alt"></i>
                         Lokasi Infrastruktur
                     </label>
-                    <input type="text" id="lokasi_infra" name="lokasi_infra" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  required />
+                    <input type="text" id="lokasi_infra" name="lokasi_infra" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                 </div>
                 <div>
                     <label for="nilai_kontrak" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
@@ -233,7 +125,7 @@ ob_start();
                         <div class="absolute inset-y-0 start-0 top-0 flex items-center ps-3.5 pointer-events-none">
                             <span class="text-gray-500 dark:text-gray-400 text-sm">Rp</span>
                         </div>
-                        <input type="text" id="nilai_kontrak" name="nilai_kontrak" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  required />
+                        <input type="number" id="nilai_kontrak" name="nilai_kontrak" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                     </div>
                 </div>
                 <div class="flex gap-4 w-full">
@@ -242,14 +134,14 @@ ob_start();
                             <i class="fas fa-calendar-alt"></i>
                             Mulai Kontrak
                         </label>
-                        <input min="2020-01-01" max="2024-12-31" type="date" id="tahun_mulai" name="tahun_mulai" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  required />
+                        <input min="2020-01-01" max="2024-12-31" type="date" id="tahun_mulai" name="tahun_mulai" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                     </div>
                     <div class="w-1/2">
                         <label for="tahun_selesai" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                             <i class="fas fa-calendar-check"></i>
                             Selesai Kontrak
                         </label>
-                        <input min="2020-01-01" max="2024-12-31" type="date" id="tahun_selesai" name="tahun_selesai" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  required />
+                        <input min="2020-01-01" max="2024-12-31" type="date" id="tahun_selesai" name="tahun_selesai" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                     </div>
                 </div>
             </div>
@@ -283,7 +175,7 @@ ob_start();
                                 <div data-section-id="<?= $section['section_id'] ?>" class="section-kategori-decision-<?= $section['section_id'] ?> hidden">
                                     <?= $section['section_kategori_decision'] ?>
                                 </div>
-    
+
                                 <div class="flex gap-2">
                                     <span>
                                         <i class="fas fa-building"></i>
@@ -295,7 +187,7 @@ ob_start();
                                         <span data-section-id="<?= $section['section_id'] ?>" class="section-result-<?= $section['section_id'] ?> block md:hidden nilai-section">-</span>
                                         <span data-section-id="<?= $section['section_id'] ?>" class="section-result-kategori-<?= $section['section_id'] ?> block md:hidden uppercase font-bold">(-)</span>
                                     </div>
-    
+
                                 </div>
                             </td>
                             <td class="hidden md:table-cell px-6 py-3 nilai-section">
@@ -397,8 +289,9 @@ ob_start();
                 </tbody>
             </table>
         </div>
-        <div class="w-full">
-            <button type="submit">Submit</button>
+        <div class="w-full flex justify-end">
+            <button type="submit" class="flex items-center justify-center gap-2 w-full md:w-max uppercase text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                <i class="fas fa-paper-plane"></i>Submit Evaluasi</button>
         </div>
     </div>
 </form>
@@ -445,12 +338,12 @@ ob_start();
         const totalSkorIndikator = data.find(d => d.section_id == sectionId)
             .section_sub.find(d => d.section_sub_id == sectionSubId)
             .indikator.map(d => d.indikator_skor).reduce((a, b) => a + b, 0);
-        
+
         document.querySelectorAll(`.section-sub-total-bobot-${sectionId}-${sectionSubId}`).forEach(el => el.textContent = totalSkorIndikator.toFixed(2));
         data.find(d => d.section_id == sectionId)
             .section_sub.find(d => d.section_sub_id == sectionSubId)
             .section_sub_skor = totalSkorIndikator;
-        
+
         const kategoriDecision = document.querySelector(`.section-sub-kategori-decision-${sectionId}-${sectionSubId}`).textContent;
         const fn1 = new Function('x', kategoriDecision);
         const [kategoriSectionSub, nilaiKategoriSectionSub] = fn1(totalSkorIndikator);
@@ -483,17 +376,21 @@ ob_start();
         const formData = Object.fromEntries(new FormData(e.target));
         formData.evaluasi = data;
         fetch('store.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData),
-        })
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            })
             .then(response => response.json())
             .then(data => {
-                console.log(data);
+                if (data.status == 'success') {
+                    alert('Data berhasil disimpan');
+                    window.location.reload();
+                }
             })
             .catch((error) => {
+                alert('Data gagal disimpan');
                 console.error('Error:', error);
             });
     }

@@ -1,5 +1,5 @@
 <?php
-include 'db.php';
+include 'db_old.php';
 
 // Ambil id dari URL
 $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
