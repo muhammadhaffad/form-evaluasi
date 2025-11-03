@@ -4,9 +4,12 @@ $user = "root";
 $pass = "";
 $dbname = "evaluasi2"; // ganti sesuai nama database kamu
 
-$conn = new mysqli($host, $user, $pass, $dbname);
-
-if ($conn->connect_error) {
-    die("Koneksi gagal: " . $conn->connect_error);
+try {
+    $dsn = "mysql:host=$host;dbname=$dbname;charset=utf8mb4";
+    $conn = new PDO($dsn, $user, $pass);
+    // Set error mode agar PDO menampilkan exception jika terjadi error
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    // echo "Koneksi berhasil!"; // optional untuk testing
+} catch (PDOException $e) {
+    die("Koneksi gagal: " . $e->getMessage());
 }
-?>
