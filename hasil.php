@@ -45,7 +45,7 @@ ob_start();
     </div>
 </div>
 <div class="space-y-6">
-    <div class="grid grid-cols-3 gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div class="bg-white border-l-4 border-l-blue-500! border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 flex flex-col items-center gap-4 p-4">
             <i class="fas fa-building text-blue-500 text-4xl"></i>
             <p class="dark:text-white text-4xl font-bold"><?= $infrastrukturCount['total'] ?></p>

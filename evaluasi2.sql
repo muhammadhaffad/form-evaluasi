@@ -16,12 +16,10 @@
 
 
 -- Dumping database structure for evaluasi2
-DROP DATABASE IF EXISTS `evaluasi2`;
 CREATE DATABASE IF NOT EXISTS `evaluasi2` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `evaluasi2`;
 
 -- Dumping structure for table evaluasi2.evaluations
-DROP TABLE IF EXISTS `evaluations`;
 CREATE TABLE IF NOT EXISTS `evaluations` (
   `id` int NOT NULL AUTO_INCREMENT,
   `namaInfra` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
@@ -62,7 +60,6 @@ CREATE TABLE IF NOT EXISTS `evaluations` (
 -- Dumping data for table evaluasi2.evaluations: ~3 rows (approximately)
 
 -- Dumping structure for table evaluasi2.indikator
-DROP TABLE IF EXISTS `indikator`;
 CREATE TABLE IF NOT EXISTS `indikator` (
   `id` int NOT NULL AUTO_INCREMENT,
   `indikator_nama` varchar(255) DEFAULT NULL,
@@ -73,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `indikator` (
   CONSTRAINT `indikator_ibfk_1` FOREIGN KEY (`section_sub_id`) REFERENCES `section_sub` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table evaluasi2.indikator: ~32 rows (approximately)
+-- Dumping data for table evaluasi2.indikator: ~0 rows (approximately)
 INSERT INTO `indikator` (`id`, `indikator_nama`, `indikator_bobot`, `section_sub_id`) VALUES
 	(1, 'Kondisi Struktur Bawah (Fondasi)', 30, 1),
 	(2, 'Kondisi Struktur Atas (Kolom, Sloof, Balok, Pelat Lantai)', 30, 1),
@@ -109,7 +106,6 @@ INSERT INTO `indikator` (`id`, `indikator_nama`, `indikator_bobot`, `section_sub
 	(32, 'Sarana Akses dan Pencegahan Kebakaran', 30, 10);
 
 -- Dumping structure for table evaluasi2.indikator_kriteria
-DROP TABLE IF EXISTS `indikator_kriteria`;
 CREATE TABLE IF NOT EXISTS `indikator_kriteria` (
   `id` int NOT NULL AUTO_INCREMENT,
   `kriteria_nama` varchar(255) DEFAULT NULL,
@@ -120,7 +116,7 @@ CREATE TABLE IF NOT EXISTS `indikator_kriteria` (
   CONSTRAINT `indikator_kriteria_ibfk_1` FOREIGN KEY (`indikator_id`) REFERENCES `indikator` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=97 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table evaluasi2.indikator_kriteria: ~96 rows (approximately)
+-- Dumping data for table evaluasi2.indikator_kriteria: ~0 rows (approximately)
 INSERT INTO `indikator_kriteria` (`id`, `kriteria_nama`, `nilai`, `indikator_id`) VALUES
 	(1, 'Tidak ada penurunan/retak, fondasi stabil', 3, 1),
 	(2, 'Ada retakan kecil/penurunan sebagian namun masih aman digunakan.', 2, 1),
@@ -220,7 +216,6 @@ INSERT INTO `indikator_kriteria` (`id`, `kriteria_nama`, `nilai`, `indikator_id`
 	(96, 'Tidak ada akses kendaraan pemadam ke area rawan kebakaran.', 1, 32);
 
 -- Dumping structure for table evaluasi2.infrastruktur
-DROP TABLE IF EXISTS `infrastruktur`;
 CREATE TABLE IF NOT EXISTS `infrastruktur` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nama_infra` varchar(255) DEFAULT NULL,
@@ -236,7 +231,6 @@ INSERT INTO `infrastruktur` (`id`, `nama_infra`, `lokasi_infra`, `nilai_kontrak`
 	(3, 'Test Infrastruktur', 'Jawa Timur', '100000000', '2023-12-31', '2024-12-31');
 
 -- Dumping structure for table evaluasi2.infrastruktur_evaluasi
-DROP TABLE IF EXISTS `infrastruktur_evaluasi`;
 CREATE TABLE IF NOT EXISTS `infrastruktur_evaluasi` (
   `id` int NOT NULL AUTO_INCREMENT,
   `infrastruktur_id` int DEFAULT NULL,
@@ -261,7 +255,6 @@ INSERT INTO `infrastruktur_evaluasi` (`id`, `infrastruktur_id`, `section_nama`, 
 	(10, 3, 'Sistem Proteksi Kebakaran', 'return x > 50 ? \'(Berfungsi)\' : x > 0 ? \'(Kurang Berfungsi)\' : \'(Tidak Berfungsi)\'', 50, '(Kurang Berfungsi)');
 
 -- Dumping structure for table evaluasi2.infrastruktur_evaluasi_sub
-DROP TABLE IF EXISTS `infrastruktur_evaluasi_sub`;
 CREATE TABLE IF NOT EXISTS `infrastruktur_evaluasi_sub` (
   `id` int NOT NULL AUTO_INCREMENT,
   `infrastruktur_evaluasi_id` int DEFAULT NULL,
@@ -290,7 +283,6 @@ INSERT INTO `infrastruktur_evaluasi_sub` (`id`, `infrastruktur_evaluasi_id`, `se
 	(14, 10, 'Sistem Proteksi Kebakaran', 100, 'return nilai_arr.filter(n=>[31].includes(n.id)).map(n => n.nilai).includes(1) ? [\'tidak baik\', 0] : x > 85 ? [\'baik\', 100] : x > 20 ? [\'kurang baik\', 50] : [\'tidak baik\', 0]', 85, 'kurang baik', 50);
 
 -- Dumping structure for table evaluasi2.infrastruktur_evaluasi_sub_indikator
-DROP TABLE IF EXISTS `infrastruktur_evaluasi_sub_indikator`;
 CREATE TABLE IF NOT EXISTS `infrastruktur_evaluasi_sub_indikator` (
   `id` int NOT NULL AUTO_INCREMENT,
   `infrastruktur_evaluasi_sub_id` int DEFAULT NULL,
@@ -339,7 +331,6 @@ INSERT INTO `infrastruktur_evaluasi_sub_indikator` (`id`, `infrastruktur_evaluas
 	(44, 14, 'Sarana Akses dan Pencegahan Kebakaran', 30, 15, 2);
 
 -- Dumping structure for table evaluasi2.infrastruktur_evaluasi_sub_indikator_kriteria
-DROP TABLE IF EXISTS `infrastruktur_evaluasi_sub_indikator_kriteria`;
 CREATE TABLE IF NOT EXISTS `infrastruktur_evaluasi_sub_indikator_kriteria` (
   `id` int NOT NULL AUTO_INCREMENT,
   `infrastruktur_evaluasi_sub_indikator_id` int DEFAULT NULL,
@@ -450,27 +441,26 @@ INSERT INTO `infrastruktur_evaluasi_sub_indikator_kriteria` (`id`, `infrastruktu
 	(132, 44, 'Tidak ada akses kendaraan pemadam ke area rawan kebakaran.', 1);
 
 -- Dumping structure for table evaluasi2.section
-DROP TABLE IF EXISTS `section`;
 CREATE TABLE IF NOT EXISTS `section` (
   `id` int NOT NULL AUTO_INCREMENT,
   `section_nama` varchar(255) DEFAULT NULL,
   `section_kategori_decision` text,
+  `info` text,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Dumping data for table evaluasi2.section: ~8 rows (approximately)
-INSERT INTO `section` (`id`, `section_nama`, `section_kategori_decision`) VALUES
-	(1, 'Kondisi Bangunan', 'return x > 70 ? \'(Berfungsi)\' : x >= 30 ? \'(Kurang Berfungsi)\' : \'(Tidak Berfungsi)\''),
-	(2, 'Jalan', 'return x > 50 ? \'(Berfungsi)\' : x > 0 ? \'(Kurang Berfungsi)\' : \'(Tidak Berfungsi)\''),
-	(3, 'Drainase', 'return x > 50 ? \'(Berfungsi)\' : x > 0 ? \'(Kurang Berfungsi)\' : \'(Tidak Berfungsi)\''),
-	(4, 'Pengelolaan Persampahan', 'return x > 50 ? \'(Berfungsi)\' : x > 0 ? \'(Kurang Berfungsi)\' : \'(Tidak Berfungsi)\''),
-	(5, 'Sistem Penyediaan Air Minum', 'return x > 50 ? \'(Berfungsi)\' : x > 0 ? \'(Kurang Berfungsi)\' : \'(Tidak Berfungsi)\''),
-	(6, 'Sistem Pengelolaan Air Limbah', 'return x > 50 ? \'(Berfungsi)\' : x > 0 ? \'(Kurang Berfungsi)\' : \'(Tidak Berfungsi)\''),
-	(7, 'RTH/RTHP/Infrastruktur Pendukung Kawasan', 'return x > 50 ? \'(Berfungsi)\' : x > 0 ? \'(Kurang Berfungsi)\' : \'(Tidak Berfungsi)\''),
-	(8, 'Sistem Proteksi Kebakaran', 'return x > 50 ? \'(Berfungsi)\' : x > 0 ? \'(Kurang Berfungsi)\' : \'(Tidak Berfungsi)\'');
+INSERT INTO `section` (`id`, `section_nama`, `section_kategori_decision`, `info`) VALUES
+	(1, 'Kondisi Bangunan', 'return x > 70 ? \'(Berfungsi)\' : x >= 30 ? \'(Kurang Berfungsi)\' : \'(Tidak Berfungsi)\'', '<div style="font-size: 0.875rem; line-height: 1.5; color: #111;"> <strong>A. Bangunan Gedung</strong><br><br> <strong>1) Struktur</strong><br> Apabila salah satu indikator bernilai <strong>1</strong>, maka hasil penilaian adalah <em>“tidak baik”</em>. Jika tidak, maka hasil penilaian ditentukan dari nilai: <ul style="margin-top: 4px; margin-left: 18px; list-style-type: disc;"> <li>Jika nilai <strong>&gt; 85</strong>: hasil penilaian adalah <em>“baik”</em>.</li> <li>Jika nilai <strong>30 s.d. 85</strong>: hasil penilaian adalah <em>“kurang baik”</em>.</li> <li>Jika nilai <strong>&lt; 30</strong>: hasil penilaian adalah <em>“tidak baik”</em>.</li> </ul> <br> <strong>2) Arsitektur</strong><br> Apabila salah satu indikator bernilai <strong>1</strong>, maka hasil penilaian adalah <em>“tidak baik”</em>. Jika tidak, maka hasil penilaian ditentukan dari nilai: <ul style="margin-top: 4px; margin-left: 18px; list-style-type: disc;"> <li>Jika nilai <strong>&gt; 81</strong>: hasil penilaian adalah <em>“baik”</em>.</li> <li>Jika nilai <strong>50 s.d. 81</strong>: hasil penilaian adalah <em>“kurang baik”</em>.</li> <li>Jika nilai <strong>&lt; 50</strong>: hasil penilaian adalah <em>“tidak baik”</em>.</li> </ul> <br> <strong>3) MEP</strong><br> Apabila salah satu indikator <em>Sistem Kelistrikan</em> (penerangan, stopkontak), <em>Sistem Air Bersih</em>, <em>Sistem Air Bekas (Grey Water)</em> atau <em>Sistem Air Kotor (Black Water)</em> bernilai <strong>1</strong>, maka hasil penilaian adalah <em>“tidak baik”</em>. Jika tidak, maka hasil penilaian ditentukan dari nilai: <ul style="margin-top: 4px; margin-left: 18px; list-style-type: disc;"> <li>Jika nilai <strong>&gt; 85</strong>: hasil penilaian adalah <em>“baik”</em>.</li> <li>Jika nilai <strong>50 s.d. 85</strong>: hasil penilaian adalah <em>“kurang baik”</em>.</li> <li>Jika nilai <strong>&lt; 50</strong>: hasil penilaian adalah <em>“tidak baik”</em>.</li> </ul></div>'),
+	(2, 'Jalan', 'return x > 50 ? \'(Berfungsi)\' : x > 0 ? \'(Kurang Berfungsi)\' : \'(Tidak Berfungsi)\'', '<div style="font-size: 0.875rem; line-height: 1.5; color: #111;"> Apabila salah satu indikator <em>Kualitas Permukaan Jalan</em> atau <em>Aksesibilitas Jalan</em> bernilai <strong>1</strong>, maka hasil penilaian adalah <em>“tidak baik”</em>. Jika tidak, maka hasil penilaian ditentukan dari nilai: <ul style="margin-top: 4px; margin-left: 18px; list-style-type: disc;"> <li>Jika nilai <strong>&gt; 85</strong>: hasil penilaian adalah <em>“baik”</em>.</li> <li>Jika nilai <strong>20 s.d. 85</strong>: hasil penilaian adalah <em>“kurang baik”</em>.</li> <li>Jika nilai <strong>&lt; 20</strong>: hasil penilaian adalah <em>“tidak baik”</em>.</li> </ul></div>'),
+	(3, 'Drainase', 'return x > 50 ? \'(Berfungsi)\' : x > 0 ? \'(Kurang Berfungsi)\' : \'(Tidak Berfungsi)\'', '<div style="font-size: 0.875rem; line-height: 1.5; color: #111;"> Apabila salah satu indikator <em>Kondisi Fisik Saluran</em> atau <em>Konektivitas Saluran</em> bernilai <strong>1</strong>, maka hasil penilaian adalah <em>“tidak baik”</em>. Jika tidak, maka hasil penilaian ditentukan dari nilai: <ul style="margin-top: 4px; margin-left: 18px; list-style-type: disc;"> <li>Jika nilai <strong>&gt; 90</strong>: hasil penilaian adalah <em>“baik”</em>.</li> <li>Jika nilai <strong>40 s.d. 90</strong>: hasil penilaian adalah <em>“kurang baik”</em>.</li> <li>Jika nilai <strong>&lt; 40</strong>: hasil penilaian adalah <em>“tidak baik”</em>.</li> </ul></div>'),
+	(4, 'Pengelolaan Persampahan', 'return x > 50 ? \'(Berfungsi)\' : x > 0 ? \'(Kurang Berfungsi)\' : \'(Tidak Berfungsi)\'', '<div style="font-size: 0.875rem; line-height: 1.5; color: #111;"> Apabila salah satu indikator <em>Kondisi Prasarana dan Sarana Persampahan</em> atau <em>Pengumpulan dan Pengangkutan</em> bernilai <strong>1</strong>, maka hasil penilaian adalah <em>“tidak baik”</em>. Jika tidak, maka hasil penilaian ditentukan dari nilai: <ul style="margin-top: 4px; margin-left: 18px; list-style-type: disc;"> <li>Jika nilai <strong>&ge; 85</strong>: hasil penilaian adalah <em>“baik”</em>.</li> <li>Jika nilai <strong>20 s.d. 85</strong>: hasil penilaian adalah <em>“kurang baik”</em>.</li> <li>Jika nilai <strong>&lt; 20</strong>: hasil penilaian adalah <em>“tidak baik”</em>.</li> </ul></div>'),
+	(5, 'Sistem Penyediaan Air Minum', 'return x > 50 ? \'(Berfungsi)\' : x > 0 ? \'(Kurang Berfungsi)\' : \'(Tidak Berfungsi)\'', '<div style="font-size: 0.875rem; line-height: 1.5; color: #111;"> Apabila salah satu indikator <em>Distribusi Air</em> atau <em>Kualitas Air</em> bernilai <strong>1</strong>, maka hasil penilaian adalah <em>“tidak baik”</em>. Jika tidak, maka hasil penilaian ditentukan dari nilai: <ul style="margin-top: 4px; margin-left: 18px; list-style-type: disc;"> <li>Jika nilai <strong>&gt; 90</strong>: hasil penilaian adalah <em>“baik”</em>.</li> <li>Jika nilai <strong>40 s.d. 90</strong>: hasil penilaian adalah <em>“kurang baik”</em>.</li> <li>Jika nilai <strong>&lt; 40</strong>: hasil penilaian adalah <em>“tidak baik”</em>.</li> </ul></div>'),
+	(6, 'Sistem Pengelolaan Air Limbah', 'return x > 50 ? \'(Berfungsi)\' : x > 0 ? \'(Kurang Berfungsi)\' : \'(Tidak Berfungsi)\'', '<div style="font-size: 0.875rem; line-height: 1.5; color: #111;"> Apabila salah satu indikator <em>Jaringan Pembuangan Limbah</em> atau <em>Sarana Pengolahan Limbah</em> bernilai <strong>1</strong>, maka hasil penilaian adalah <em>“tidak baik”</em>. Jika tidak, maka hasil penilaian ditentukan dari nilai: <ul style="margin-top: 4px; margin-left: 18px; list-style-type: disc;"> <li>Jika nilai <strong>&gt; 75</strong>: hasil penilaian adalah <em>“baik”</em>.</li> <li>Jika nilai <strong>20 s.d. 75</strong>: hasil penilaian adalah <em>“kurang baik”</em>.</li> <li>Jika nilai <strong>&lt; 20</strong>: hasil penilaian adalah <em>“tidak baik”</em>.</li> </ul></div>'),
+	(7, 'RTH/RTHP/Infrastruktur Pendukung Kawasan', 'return x > 50 ? \'(Berfungsi)\' : x > 0 ? \'(Kurang Berfungsi)\' : \'(Tidak Berfungsi)\'', '<div style="font-size: 0.875rem; line-height: 1.5; color: #111;"> Apabila salah satu indikator <em>Vegetasi (Tanaman, Pohon, Rumput)</em> atau <em>Aksesibilitas &amp; Kenyamanan</em> bernilai <strong>1</strong>, maka hasil penilaian adalah <em>“tidak baik”</em>. Jika tidak, maka hasil penilaian ditentukan dari nilai: <ul style="margin-top: 4px; margin-left: 18px; list-style-type: disc;"> <li>Jika nilai <strong>&ge; 85</strong>: hasil penilaian adalah <em>“baik”</em>.</li> <li>Jika nilai <strong>20 s.d. 85</strong>: hasil penilaian adalah <em>“kurang baik”</em>.</li> <li>Jika nilai <strong>&lt; 20</strong>: hasil penilaian adalah <em>“tidak baik”</em>.</li> </ul></div>'),
+	(8, 'Sistem Proteksi Kebakaran', 'return x > 50 ? \'(Berfungsi)\' : x > 0 ? \'(Kurang Berfungsi)\' : \'(Tidak Berfungsi)\'', '<div style="font-size: 0.875rem; line-height: 1.5; color: #111;"> Apabila salah satu indikator <em>Ketersediaan Hidran Kawasan</em> bernilai <strong>1</strong>, maka hasil penilaian adalah <em>“tidak baik”</em>. Jika tidak, maka hasil penilaian ditentukan dari nilai: <ul style="margin-top: 4px; margin-left: 18px; list-style-type: disc;"> <li>Jika nilai <strong>&gt; 85</strong>: hasil penilaian adalah <em>“baik”</em>.</li> <li>Jika nilai <strong>20 s.d. 90</strong>: hasil penilaian adalah <em>“kurang baik”</em>.</li> <li>Jika nilai <strong>&lt; 20</strong>: hasil penilaian adalah <em>“tidak baik”</em>.</li> </ul></div>');
 
 -- Dumping structure for table evaluasi2.section_sub
-DROP TABLE IF EXISTS `section_sub`;
 CREATE TABLE IF NOT EXISTS `section_sub` (
   `id` int NOT NULL AUTO_INCREMENT,
   `section_sub_nama` varchar(255) DEFAULT NULL,
@@ -482,7 +472,7 @@ CREATE TABLE IF NOT EXISTS `section_sub` (
   CONSTRAINT `section_sub_ibfk_1` FOREIGN KEY (`section_id`) REFERENCES `section` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table evaluasi2.section_sub: ~10 rows (approximately)
+-- Dumping data for table evaluasi2.section_sub: ~0 rows (approximately)
 INSERT INTO `section_sub` (`id`, `section_sub_nama`, `section_sub_bobot`, `section_sub_kategori_decision`, `section_id`) VALUES
 	(1, 'Struktur', 40, 'return nilai_arr.map(n => n.nilai).includes(1) ? [\'tidak baik\', 0] : x > 85 ? [\'baik\', 100] : x > 35 ? [\'kurang baik\', 50] : [\'tidak baik\', 0]', 1),
 	(2, 'Arsitektur', 30, 'return nilai_arr.map(n => n.nilai).includes(1) ? [\'tidak baik\', 0] : x > 81 ? [\'baik\', 100] : x > 50 ? [\'kurang baik\', 50] : [\'tidak baik\', 0]', 1),

@@ -10,8 +10,8 @@
     <script src="./node_modules/flowbite/dist/flowbite.min.js"></script>
 </head>
 
-<body class="bg-gray-100">
-    <main class="max-w-[1400px] w-full mx-auto p-5 space-y-4">
+<body class="bg-gray-100 dark:bg-gray-900">
+    <main class="max-w-[1400px] overflow-hidden w-full mx-auto p-5 space-y-4">
         <header>
             <div class="rounded-2xl p-8 bg-gradient-to-r from-blue-700 to-blue-900 flex flex-col md:flex-row  gap-4 items-center">
                 <div class="bg-white/30 rounded-full h-20 w-20 flex items-center justify-center">
