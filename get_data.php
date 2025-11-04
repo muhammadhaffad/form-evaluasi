@@ -76,7 +76,7 @@ $infrastruktur['infrastruktur_skor'] = array_sum(array_column($infrastrukturEval
 ob_start();
 ?>
 <div class="space-y-6">
-	<div class="p-2 border-l-4! border-l-blue-500! border border-gray-200 dark:border-gray-500 rounded-lg grid grid-cols-1 gap-1 bg-white dark:bg-gray-700 dark:text-white" style="padding: 1rem 1.5rem;">
+	<div class="p-2 border-l-4! border-l-blue-500! border border-gray-200 rounded-lg grid grid-cols-1 gap-1 bg-white" style="padding: 1rem 1.5rem;">
 		<h2 class="text-lg font-semibold"><?= $infrastruktur['nama_infra'] ?></h2>
 		<div class="flex gap-2">
 			<div class="flex gap-1 items-center">
@@ -100,9 +100,9 @@ ob_start();
 			<p>Rp<?= formatRupiahSingkat($infrastruktur['nilai_kontrak'], 0, ',', '.') ?></p>
 		</div>
 	</div>
-	<div class="max-h-screen overflow-auto bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-500 flex flex-col gap-4">
-		<table class="border border-collapse w-full text-sm text-left rtl:text-right dark:text-gray-400">
-			<thead class="sticky top-0 hidden md:table-header-group text-xs [&_th]:uppercase [&_th]:text-white md:[&_th]:outline [&_th]:outline-blue-900 [&_th]:dark:outline-gray-500 bg-blue-700 dark:bg-gray-700 dark:text-gray-200">
+	<div class="max-h-screen overflow-auto bg-white border border-gray-200 rounded-lg shadow-sm flex flex-col gap-4">
+		<table class="border border-collapse w-full text-sm text-left rtl:text-right">
+			<thead class="sticky top-0 hidden md:table-header-group text-xs [&_th]:uppercase [&_th]:text-white md:[&_th]:outline [&_th]:outline-blue-900 bg-blue-700">
 				<tr>
 					<th class="px-6 py-3" rowspan="2">No</th>
 					<th class="px-6 py-3" rowspan="2">Indikator</th>
@@ -124,7 +124,7 @@ ob_start();
 			<tbody>
 				<?php foreach ($datas as $section): ?>
 					<!-- Section -->
-					<tr class="bg-blue-700/80 dark:bg-gray-700/80 text-white md:[&_td]:border [&_td]:border-blue-900 [&_td]:dark:border-gray-500">
+					<tr class="bg-blue-700/80/80 text-white md:[&_td]:border [&_td]:border-blue-900 [&_td]">
 						<td colspan="9" class="block md:table-cell px-6 py-3 uppercase font-bold">
 							<div data-section-id="<?= $section['section_id'] ?>" class="section-kategori-decision-<?= $section['section_id'] ?> hidden">
 								<?= $section['section_kategori_decision'] ?>
@@ -153,7 +153,7 @@ ob_start();
 					</tr>
 					<?php foreach ($section['section_sub'] as $data): ?>
 						<!-- Section Sub -->
-						<tr class="font-semibold [&_td]:bg-blue-700/60 dark:[&_td]:bg-gray-700/60 text-white md:[&_td]:border [&_td]:border-blue-900 [&_td]:dark:border-gray-500">
+						<tr class="font-semibold [&_td]:bg-blue-700/60 text-white md:[&_td]:border [&_td]:border-blue-900 [&_td]">
 							<td colspan="9" class="block md:table-cell px-6 py-3">
 								<div class="flex">
 									<span>
@@ -174,8 +174,8 @@ ob_start();
 						<?php foreach ($data['indikator'] as $key => $sub): ?>
 							<!-- Indikator -->
 							<tr>
-								<td rowspan="<?= count($sub['indikator_kriteria']) ?>" class="hidden md:table-cell md:border dark:border-gray-500 px-6 py-3"><?= $key + 1; ?></td>
-								<td rowspan="<?= count($sub['indikator_kriteria']) ?>" class="block md:table-cell border-y border-y-gray-200 md:border dark:border-gray-500 px-6 py-3">
+								<td rowspan="<?= count($sub['indikator_kriteria']) ?>" class="hidden md:table-cell md:border px-6 py-3"><?= $key + 1; ?></td>
+								<td rowspan="<?= count($sub['indikator_kriteria']) ?>" class="block md:table-cell border-y border-y-gray-200 md:border px-6 py-3">
 									<div class="flex gap-2">
 										<span class="md:hidden">
 											<?= $key + 1; ?>.
@@ -190,7 +190,7 @@ ob_start();
 								</td>
 								<?php foreach ($sub['indikator_kriteria'] as $key_kriteria => $value_kriteria): ?>
 									<!-- Indikator kriteria -->
-									<td data-section-id="<?= $section['section_id'] ?>" data-section-sub-id="<?= $data['section_sub_id'] ?>" data-indikator-id="<?= $sub['indikator_id'] ?>" data-indikator-kriteria-id="<?= $value_kriteria['id'] ?>" class="block kriteria-<?= $section['section_id'] ?>-<?= $data['section_sub_id'] ?>-<?= $sub['indikator_id'] ?>-<?= $value_kriteria['id'] ?> <?= ($key_kriteria == 0) ? 'md:table-cell' : 'md:hidden' ?> md:border dark:border-gray-500 px-6 py-3">
+									<td data-section-id="<?= $section['section_id'] ?>" data-section-sub-id="<?= $data['section_sub_id'] ?>" data-indikator-id="<?= $sub['indikator_id'] ?>" data-indikator-kriteria-id="<?= $value_kriteria['id'] ?>" class="block kriteria-<?= $section['section_id'] ?>-<?= $data['section_sub_id'] ?>-<?= $sub['indikator_id'] ?>-<?= $value_kriteria['id'] ?> <?= ($key_kriteria == 0) ? 'md:table-cell' : 'md:hidden' ?> md:border px-6 py-3">
 										<div class="flex gap-2 items-center">
 											<span class="md:hidden aspect-square w-8 h-8 flex items-center justify-center rounded-full bg-green-500 font-bold text-white">
 												<?= $value_kriteria['nilai'] ?>
@@ -201,22 +201,22 @@ ob_start();
 										</div>
 									</td>
 								<?php endforeach; ?>
-								<td rowspan="<?= count($sub['indikator_kriteria']) ?>" data-section-id="<?= $section['section_id'] ?>" data-section-sub-id="<?= $data['section_sub_id'] ?>" data-indikator-id="<?= $sub['indikator_id'] ?>" class="hidden indikator-bobot-<?= $section['section_id'] ?>-<?= $data['section_sub_id'] ?>-<?= $sub['indikator_id'] ?> md:table-cell md:border dark:border-gray-500 px-6 py-3"><?= $sub['indikator_bobot'] ?></td>
-								<td class="hidden md:table-cell md:border dark:border-gray-500 px-6 py-3"><?= $sub['indikator_kriteria'][0]['nilai'] ?></td>
-								<td rowspan="<?= count($sub['indikator_kriteria']) ?>" data-label="Nilai Indikator:" class="block md:table-cell md:border dark:border-gray-500 px-6 py-3 before:content-[attr(data-label)] before:me-1 before:font-semibold before:dark:text-gray-200 before:inline-block md:before:hidden before:mb-1">
+								<td rowspan="<?= count($sub['indikator_kriteria']) ?>" data-section-id="<?= $section['section_id'] ?>" data-section-sub-id="<?= $data['section_sub_id'] ?>" data-indikator-id="<?= $sub['indikator_id'] ?>" class="hidden indikator-bobot-<?= $section['section_id'] ?>-<?= $data['section_sub_id'] ?>-<?= $sub['indikator_id'] ?> md:table-cell md:border px-6 py-3"><?= $sub['indikator_bobot'] ?></td>
+								<td class="hidden md:table-cell md:border px-6 py-3"><?= $sub['indikator_kriteria'][0]['nilai'] ?></td>
+								<td rowspan="<?= count($sub['indikator_kriteria']) ?>" data-label="Nilai Indikator:" class="block md:table-cell md:border px-6 py-3 before:content-[attr(data-label)] before:me-1 before:font-semibold before before:inline-block md:before:hidden before:mb-1">
 									<?= $sub['indikator_nilai'] ?>
 								</td>
-								<td data-section-id="<?= $section['section_id'] ?>" data-section-sub-id="<?= $data['section_sub_id'] ?>" data-indikator-id="<?= $sub['indikator_id'] ?>" rowspan="<?= count($sub['indikator_kriteria']) ?>" data-label="Bobot Evaluasi:" class="indikator-bobot-eval-<?= $section['section_id'] ?>-<?= $data['section_sub_id'] ?>-<?= $sub['indikator_id'] ?> block md:table-cell md:border border-t border-t-gray-200 dark:border-gray-500 px-6 py-3 before:content-[attr(data-label)] before:me-1 before:font-semibold before:dark:text-gray-200 before:inline-block md:before:hidden before:mb-1">
+								<td data-section-id="<?= $section['section_id'] ?>" data-section-sub-id="<?= $data['section_sub_id'] ?>" data-indikator-id="<?= $sub['indikator_id'] ?>" rowspan="<?= count($sub['indikator_kriteria']) ?>" data-label="Bobot Evaluasi:" class="indikator-bobot-eval-<?= $section['section_id'] ?>-<?= $data['section_sub_id'] ?>-<?= $sub['indikator_id'] ?> block md:table-cell md:border border-t border-t-gray-200 px-6 py-3 before:content-[attr(data-label)] before:me-1 before:font-semibold before before:inline-block md:before:hidden before:mb-1">
 									<?= $sub['indikator_skor'] ?>
 								</td>
 								<?php if ($key == 0): ?>
-									<td data-section-id="<?= $section['section_id'] ?>" data-section-sub-id="<?= $data['section_sub_id'] ?>" rowspan="<?= count($sub['indikator_kriteria']) * count($data['indikator']) ?>" class="section-sub-total-bobot-<?= $section['section_id'] ?>-<?= $data['section_sub_id'] ?> hidden md:table-cell md:border dark:border-gray-500 px-6 py-3">
+									<td data-section-id="<?= $section['section_id'] ?>" data-section-sub-id="<?= $data['section_sub_id'] ?>" rowspan="<?= count($sub['indikator_kriteria']) * count($data['indikator']) ?>" class="section-sub-total-bobot-<?= $section['section_id'] ?>-<?= $data['section_sub_id'] ?> hidden md:table-cell md:border px-6 py-3">
 										<?= $data['section_sub_skor'] ?>
 									</td>
-									<td data-section-id="<?= $section['section_id'] ?>" data-section-sub-id="<?= $data['section_sub_id'] ?>" rowspan="<?= count($sub['indikator_kriteria']) * count($data['indikator']) ?>" class="section-sub-kategori-<?= $section['section_id'] ?>-<?= $data['section_sub_id'] ?> uppercase hidden md:table-cell md:border dark:border-gray-500 px-6 py-3">
+									<td data-section-id="<?= $section['section_id'] ?>" data-section-sub-id="<?= $data['section_sub_id'] ?>" rowspan="<?= count($sub['indikator_kriteria']) * count($data['indikator']) ?>" class="section-sub-kategori-<?= $section['section_id'] ?>-<?= $data['section_sub_id'] ?> uppercase hidden md:table-cell md:border px-6 py-3">
 										<?= $data['section_sub_skor_kategori'] ?>
 									</td>
-									<td data-section-id="<?= $section['section_id'] ?>" data-section-sub-id="<?= $data['section_sub_id'] ?>" rowspan="<?= count($sub['indikator_kriteria']) * count($data['indikator']) ?>" class="section-sub-result-<?= $section['section_id'] ?>-<?= $data['section_sub_id'] ?> hidden md:table-cell md:border dark:border-gray-500 px-6 py-3">
+									<td data-section-id="<?= $section['section_id'] ?>" data-section-sub-id="<?= $data['section_sub_id'] ?>" rowspan="<?= count($sub['indikator_kriteria']) * count($data['indikator']) ?>" class="section-sub-result-<?= $section['section_id'] ?>-<?= $data['section_sub_id'] ?> hidden md:table-cell md:border px-6 py-3">
 										<?= $data['section_sub_skor_result'] ?>
 									</td>
 								<?php endif; ?>
@@ -225,25 +225,25 @@ ob_start();
 								<!-- Indikator Kriteria -->
 								<?php if ($key == 0) continue; ?>
 								<tr class="hidden md:table-row">
-									<td class="md:border dark:border-gray-500 px-6 py-3"><?= $value['nama'] ?></td>
-									<td class="md:border dark:border-gray-500 px-6 py-3"><?= $value['nilai'] ?></td>
+									<td class="md:border px-6 py-3"><?= $value['nama'] ?></td>
+									<td class="md:border px-6 py-3"><?= $value['nilai'] ?></td>
 								</tr>
 							<?php endforeach; ?>
 						<?php endforeach; ?>
 						<tr class="md:hidden">
-							<td data-section-id="<?= $section['section_id'] ?>" data-section-sub-id="<?= $data['section_sub_id'] ?>" class="section-sub-total-bobot-<?= $section['section_id'] ?>-<?= $data['section_sub_id'] ?> bg-gray-700/10 dark:bg-gray-700/20 block md:border dark:border-gray-500 px-6 py-3 before:content-[attr(data-label)] before:me-1 before:font-semibold dark:before:text-gray-200 before:inline-block md:before:hidden before:mb-1" data-label="Total Bobot: ">
+							<td data-section-id="<?= $section['section_id'] ?>" data-section-sub-id="<?= $data['section_sub_id'] ?>" class="section-sub-total-bobot-<?= $section['section_id'] ?>-<?= $data['section_sub_id'] ?> bg-gray-700/10/20 block md:border px-6 py-3 before:content-[attr(data-label)] before:me-1 before:font-semibold before:inline-block md:before:hidden before:mb-1" data-label="Total Bobot: ">
 								<?= $data['section_sub_skor'] ?>
 							</td>
-							<td data-section-id="<?= $section['section_id'] ?>" data-section-sub-id="<?= $data['section_sub_id'] ?>" class="section-sub-kategori-<?= $section['section_id'] ?>-<?= $data['section_sub_id'] ?> uppercase bg-gray-700/10 dark:bg-gray-700/20 block md:border dark:border-gray-500 px-6 py-3 before:content-[attr(data-label)] before:normal-case before:me-1 before:font-semibold dark:before:text-gray-200 before:inline-block md:before:hidden before:mb-1" data-label="Kategori: ">
+							<td data-section-id="<?= $section['section_id'] ?>" data-section-sub-id="<?= $data['section_sub_id'] ?>" class="section-sub-kategori-<?= $section['section_id'] ?>-<?= $data['section_sub_id'] ?> uppercase bg-gray-700/10/20 block md:border px-6 py-3 before:content-[attr(data-label)] before:normal-case before:me-1 before:font-semibold before:inline-block md:before:hidden before:mb-1" data-label="Kategori: ">
 								<?= $data['section_sub_skor_kategori'] ?>
 							</td>
-							<td data-section-id="<?= $section['section_id'] ?>" data-section-sub-id="<?= $data['section_sub_id'] ?>" class="section-sub-result-<?= $section['section_id'] ?>-<?= $data['section_sub_id'] ?> bg-gray-700/10 dark:bg-gray-700/20 block md:border dark:border-gray-500 px-6 py-3 before:content-[attr(data-label)] before:me-1 before:font-semibold dark:before:text-gray-200 before:inline-block md:before:hidden before:mb-1" data-label="Nilai Akhir: ">
+							<td data-section-id="<?= $section['section_id'] ?>" data-section-sub-id="<?= $data['section_sub_id'] ?>" class="section-sub-result-<?= $section['section_id'] ?>-<?= $data['section_sub_id'] ?> bg-gray-700/10/20 block md:border px-6 py-3 before:content-[attr(data-label)] before:me-1 before:font-semibold before:inline-block md:before:hidden before:mb-1" data-label="Nilai Akhir: ">
 								<?= $data['section_sub_skor_result'] ?>
 							</td>
 						</tr>
 					<?php endforeach; ?>
 					<tr>
-						<td class="bg-gray-700/20 dark:bg-gray-700/40 block md:border dark:border-gray-500 md:hidden px-6 py-3 nilai-section">
+						<td class="bg-gray-700/20/40 block md:border md:hidden px-6 py-3 nilai-section">
 							<span data-section-id="<?= $section['section_id'] ?>" class="section-result-<?= $section['section_id'] ?>">
 								<?= $section['section_skor'] ?>
 							</span>
@@ -254,7 +254,7 @@ ob_start();
 			</tbody>
 		</table>
 	</div>
-	<div class="p-2 border-l-4! border-l-blue-500! border border-gray-200 dark:border-gray-500 rounded-lg grid grid-cols-1 gap-1 bg-white dark:bg-gray-700 dark:text-white" style="padding: 1rem 1.5rem;">
+	<div class="p-2 border-l-4! border-l-blue-500! border border-gray-200 rounded-lg grid grid-cols-1 gap-1 bg-white" style="padding: 1rem 1.5rem;">
 		<h2 class="text-lg font-bold">Kesimpulan Evaluasi</h2>
 		<span class="font-bold">Hasil Evaluasi: <span class="font-bold">
 				<?= ($infrastruktur['infrastruktur_skor'] > 93.5 ? 'Infrastruktur Berfungsi' : ($infrastruktur['infrastruktur_skor'] > 33 ? 'Infrastruktur Kurang Berfungsi' : 'Infrastruktur Tidak Berfungsi')) ?>

@@ -16,10 +16,10 @@
 
 
 -- Dumping database structure for evaluasi2
-CREATE DATABASE IF NOT EXISTS `evaluasi2` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `evaluasi2`;
 
 -- Dumping structure for table evaluasi2.evaluations
+SET FOREIGN_KEY_CHECKS = 0;
+
 CREATE TABLE IF NOT EXISTS `evaluations` (
   `id` int NOT NULL AUTO_INCREMENT,
   `namaInfra` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
@@ -485,6 +485,7 @@ INSERT INTO `section_sub` (`id`, `section_sub_nama`, `section_sub_bobot`, `secti
 	(9, 'RTH/RTHP/Infrastruktur Pendukung Kawasan', 100, 'return nilai_arr.filter(n=>[28,30].includes(n.id)).map(n => n.nilai).includes(1) ? [\'tidak baik\', 0] : x >= 85 ? [\'baik\', 100] : x > 20 ? [\'kurang baik\', 50] : [\'tidak baik\', 0]', 7),
 	(10, 'Sistem Proteksi Kebakaran', 100, 'return nilai_arr.filter(n=>[31].includes(n.id)).map(n => n.nilai).includes(1) ? [\'tidak baik\', 0] : x > 85 ? [\'baik\', 100] : x > 20 ? [\'kurang baik\', 50] : [\'tidak baik\', 0]', 8);
 
+SET FOREIGN_KEY_CHECKS = 1;
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
