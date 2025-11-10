@@ -4,8 +4,29 @@
 @source "./node_modules/flowbite";
 
 @layer base {
+
     button:not(:disabled),
     [role="button"]:not(:disabled) {
         cursor: pointer;
+    }
+}
+
+@theme {
+    --color-primary-50: #f5f8ff;
+    --color-primary-100: #e8f0ff;
+    --color-primary-200: #cddfff;
+    --color-primary-300: #a5c5ff;
+    --color-primary-400: #6e9ef7;
+    --color-primary-500: #477fde;
+    --color-primary-600: #366cc1;
+    --color-primary-700: #2c5aa0;
+    --color-primary-800: #234c87;
+    --color-primary-900: #1b3e70;
+}
+
+
+@layer base {
+    * {
+        font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 }

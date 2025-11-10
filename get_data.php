@@ -76,33 +76,15 @@ $infrastruktur['infrastruktur_skor'] = array_sum(array_column($infrastrukturEval
 ob_start();
 ?>
 <div class="space-y-6">
-	<div class="p-2 border-l-4! border-l-blue-500! border border-gray-200 rounded-lg grid grid-cols-1 gap-1 bg-white" style="padding: 1rem 1.5rem;">
-		<h2 class="text-lg font-semibold"><?= $infrastruktur['nama_infra'] ?></h2>
-		<div class="flex gap-2">
-			<div class="flex gap-1 items-center">
-				<i class="fas fa-map-marker-alt"></i>
-				Lokasi:
-			</div>
-			<p><?= $infrastruktur['lokasi_infra'] ?></p>
-		</div>
-		<div class="flex gap-2">
-			<div class="flex gap-1 items-center">
-				<i class="fas fa-calendar"></i>
-				Tanggal:
-			</div>
-			<p><?= date('d F Y', strtotime($infrastruktur['tahun_mulai'])) ?> s/d <?= date('d F Y', strtotime($infrastruktur['tahun_selesai'])) ?></p>
-		</div>
-		<div class="flex gap-2">
-			<div class="flex gap-1 items-center">
-				<i class="fas fa-money-bill"></i>
-				Nilai Kontrak:
-			</div>
-			<p>Rp<?= formatRupiahSingkat($infrastruktur['nilai_kontrak'], 0, ',', '.') ?></p>
+	<div class="p-2 border-l-4! border-l-primary-700! border border-gray-200 rounded-lg grid grid-cols-1 gap-4 bg-white" style="padding: 1rem 1.5rem;">
+		<h2 class="text-xl font-bold text-primary-900"><?= $infrastruktur['nama_infra'] ?></h2>
+		<div class="flex gap-2 text-gray-900/60">
+			<p>Lokasi: <?= $infrastruktur['lokasi_infra'] ?> | Tahun: <?= date('d F Y', strtotime($infrastruktur['tahun_mulai'])) ?> s/d <?= date('d F Y', strtotime($infrastruktur['tahun_selesai'])) ?> | Nilai Kontrak: Rp<?= formatRupiahSingkat($infrastruktur['nilai_kontrak'], 0, ',', '.') ?></p>
 		</div>
 	</div>
 	<div class="max-h-screen overflow-auto bg-white border border-gray-200 rounded-lg shadow-sm flex flex-col gap-4">
-		<table class="border border-collapse w-full text-sm text-left rtl:text-right">
-			<thead class="sticky top-0 hidden md:table-header-group text-xs [&_th]:uppercase [&_th]:text-white md:[&_th]:outline [&_th]:outline-blue-900 bg-blue-700">
+		<table class="border border-collapse w-full text-base text-left rtl:text-right">
+			<thead class="sticky top-0 z-20 hidden md:table-header-group text-base [&_th]:uppercase [&_th]:text-white md:[&_th]:outline-[1px] [&_th]:outline-primary-600 [&_th]:font-medium [&_th]:text-center [&_th]:bg-gradient-to-r [&_th]:from-primary-700 [&_th]:to-primary-600">
 				<tr>
 					<th class="px-6 py-3" rowspan="2">No</th>
 					<th class="px-6 py-3" rowspan="2">Indikator</th>
@@ -124,8 +106,8 @@ ob_start();
 			<tbody>
 				<?php foreach ($datas as $section): ?>
 					<!-- Section -->
-					<tr class="bg-blue-700/80/80 text-white md:[&_td]:border [&_td]:border-blue-900 [&_td]">
-						<td colspan="9" class="block md:table-cell px-6 py-3 uppercase font-bold">
+					<tr class="bg-gradient-to-r to-primary-500 from-primary-800 text-white md:[&_td]:border [&_td]:border-primary-600 [&_td]">
+						<td colspan="9" class="block md:table-cell px-6 py-3 uppercase font-bold bg-primary-700/60">
 							<div data-section-id="<?= $section['section_id'] ?>" class="section-kategori-decision-<?= $section['section_id'] ?> hidden">
 								<?= $section['section_kategori_decision'] ?>
 							</div>
@@ -153,7 +135,7 @@ ob_start();
 					</tr>
 					<?php foreach ($section['section_sub'] as $data): ?>
 						<!-- Section Sub -->
-						<tr class="font-semibold [&_td]:bg-blue-700/60 text-white md:[&_td]:border [&_td]:border-blue-900 [&_td]">
+						<tr class="[&_td]:bg-primary-700/10 md:[&_td]:border-b [&_td]:border-primary-900/20">
 							<td colspan="9" class="block md:table-cell px-6 py-3">
 								<div class="flex">
 									<span>
@@ -174,8 +156,8 @@ ob_start();
 						<?php foreach ($data['indikator'] as $key => $sub): ?>
 							<!-- Indikator -->
 							<tr>
-								<td rowspan="<?= count($sub['indikator_kriteria']) ?>" class="hidden md:table-cell md:border px-6 py-3"><?= $key + 1; ?></td>
-								<td rowspan="<?= count($sub['indikator_kriteria']) ?>" class="block md:table-cell border-y border-y-gray-200 md:border px-6 py-3">
+								<td rowspan="<?= count($sub['indikator_kriteria']) ?>" class="hidden md:table-cell md:border-b md:border-primary-900/20 md:bg-primary-500/10 px-6 py-3"><?= $key + 1; ?></td>
+								<td rowspan="<?= count($sub['indikator_kriteria']) ?>" class="block md:table-cell border-y border-y-gray-200 md:border-b md:border-primary-900/20 px-6 py-3">
 									<div class="flex gap-2">
 										<span class="md:hidden">
 											<?= $key + 1; ?>.
@@ -190,7 +172,7 @@ ob_start();
 								</td>
 								<?php foreach ($sub['indikator_kriteria'] as $key_kriteria => $value_kriteria): ?>
 									<!-- Indikator kriteria -->
-									<td data-section-id="<?= $section['section_id'] ?>" data-section-sub-id="<?= $data['section_sub_id'] ?>" data-indikator-id="<?= $sub['indikator_id'] ?>" data-indikator-kriteria-id="<?= $value_kriteria['id'] ?>" class="block kriteria-<?= $section['section_id'] ?>-<?= $data['section_sub_id'] ?>-<?= $sub['indikator_id'] ?>-<?= $value_kriteria['id'] ?> <?= ($key_kriteria == 0) ? 'md:table-cell' : 'md:hidden' ?> md:border px-6 py-3">
+									<td data-section-id="<?= $section['section_id'] ?>" data-section-sub-id="<?= $data['section_sub_id'] ?>" data-indikator-id="<?= $sub['indikator_id'] ?>" data-indikator-kriteria-id="<?= $value_kriteria['id'] ?>" class="kriteria-<?= $section['section_id'] ?>-<?= $data['section_sub_id'] ?>-<?= $sub['indikator_id'] ?>-<?= $value_kriteria['id'] ?> <?= ($key_kriteria == 0) ? 'md:table-cell' : 'md:hidden' ?> block md:border-b md:border-primary-900/20 md:bg-primary-500/10 px-6 py-3">
 										<div class="flex gap-2 items-center">
 											<span class="md:hidden aspect-square w-8 h-8 flex items-center justify-center rounded-full bg-green-500 font-bold text-white">
 												<?= $value_kriteria['nilai'] ?>
@@ -201,22 +183,22 @@ ob_start();
 										</div>
 									</td>
 								<?php endforeach; ?>
-								<td rowspan="<?= count($sub['indikator_kriteria']) ?>" data-section-id="<?= $section['section_id'] ?>" data-section-sub-id="<?= $data['section_sub_id'] ?>" data-indikator-id="<?= $sub['indikator_id'] ?>" class="hidden indikator-bobot-<?= $section['section_id'] ?>-<?= $data['section_sub_id'] ?>-<?= $sub['indikator_id'] ?> md:table-cell md:border px-6 py-3"><?= $sub['indikator_bobot'] ?></td>
-								<td class="hidden md:table-cell md:border px-6 py-3"><?= $sub['indikator_kriteria'][0]['nilai'] ?></td>
-								<td rowspan="<?= count($sub['indikator_kriteria']) ?>" data-label="Nilai Indikator:" class="block md:table-cell md:border px-6 py-3 before:content-[attr(data-label)] before:me-1 before:font-semibold before before:inline-block md:before:hidden before:mb-1">
+								<td rowspan="<?= count($sub['indikator_kriteria']) ?>" data-section-id="<?= $section['section_id'] ?>" data-section-sub-id="<?= $data['section_sub_id'] ?>" data-indikator-id="<?= $sub['indikator_id'] ?>" class="indikator-bobot-<?= $section['section_id'] ?>-<?= $data['section_sub_id'] ?>-<?= $sub['indikator_id'] ?> hidden md:table-cell md:border-b md:border-primary-900/20 px-6 py-3"><?= $sub['indikator_bobot'] ?></td>
+								<td class="hidden md:table-cell md:border-b md:border-primary-900/20 md:bg-primary-500/10 px-6 py-3"><?= $sub['indikator_kriteria'][0]['nilai'] ?></td>
+								<td rowspan="<?= count($sub['indikator_kriteria']) ?>" data-label="Nilai Indikator:" class="block md:table-cell md:border-b md:border-primary-900/20 px-6 py-3 before:content-[attr(data-label)] before:me-1 before:font-semibold before before:inline-block md:before:hidden before:mb-1">
 									<?= $sub['indikator_nilai'] ?>
 								</td>
-								<td data-section-id="<?= $section['section_id'] ?>" data-section-sub-id="<?= $data['section_sub_id'] ?>" data-indikator-id="<?= $sub['indikator_id'] ?>" rowspan="<?= count($sub['indikator_kriteria']) ?>" data-label="Bobot Evaluasi:" class="indikator-bobot-eval-<?= $section['section_id'] ?>-<?= $data['section_sub_id'] ?>-<?= $sub['indikator_id'] ?> block md:table-cell md:border border-t border-t-gray-200 px-6 py-3 before:content-[attr(data-label)] before:me-1 before:font-semibold before before:inline-block md:before:hidden before:mb-1">
+								<td data-section-id="<?= $section['section_id'] ?>" data-section-sub-id="<?= $data['section_sub_id'] ?>" data-indikator-id="<?= $sub['indikator_id'] ?>" rowspan="<?= count($sub['indikator_kriteria']) ?>" data-label="Bobot Evaluasi:" class="indikator-bobot-eval-<?= $section['section_id'] ?>-<?= $data['section_sub_id'] ?>-<?= $sub['indikator_id'] ?> block md:table-cell md:border-b md:border-primary-900/20 md:bg-primary-500/10 border-t border-t-gray-200 px-6 py-3 before:content-[attr(data-label)] before:me-1 before:font-semibold before before:inline-block md:before:hidden before:mb-1">
 									<?= $sub['indikator_skor'] ?>
 								</td>
 								<?php if ($key == 0): ?>
-									<td data-section-id="<?= $section['section_id'] ?>" data-section-sub-id="<?= $data['section_sub_id'] ?>" rowspan="<?= count($sub['indikator_kriteria']) * count($data['indikator']) ?>" class="section-sub-total-bobot-<?= $section['section_id'] ?>-<?= $data['section_sub_id'] ?> hidden md:table-cell md:border px-6 py-3">
+									<td data-section-id="<?= $section['section_id'] ?>" data-section-sub-id="<?= $data['section_sub_id'] ?>" rowspan="<?= count($sub['indikator_kriteria']) * count($data['indikator']) ?>" class="section-sub-total-bobot-<?= $section['section_id'] ?>-<?= $data['section_sub_id'] ?> hidden md:table-cell md:border-b md:border-primary-900/20 px-6 py-3">
 										<?= $data['section_sub_skor'] ?>
 									</td>
-									<td data-section-id="<?= $section['section_id'] ?>" data-section-sub-id="<?= $data['section_sub_id'] ?>" rowspan="<?= count($sub['indikator_kriteria']) * count($data['indikator']) ?>" class="section-sub-kategori-<?= $section['section_id'] ?>-<?= $data['section_sub_id'] ?> uppercase hidden md:table-cell md:border px-6 py-3">
+									<td data-section-id="<?= $section['section_id'] ?>" data-section-sub-id="<?= $data['section_sub_id'] ?>" rowspan="<?= count($sub['indikator_kriteria']) * count($data['indikator']) ?>" class="section-sub-kategori-<?= $section['section_id'] ?>-<?= $data['section_sub_id'] ?> uppercase hidden md:table-cell md:border-b md:border-primary-900/20 md:bg-primary-500/10 px-6 py-3">
 										<?= $data['section_sub_skor_kategori'] ?>
 									</td>
-									<td data-section-id="<?= $section['section_id'] ?>" data-section-sub-id="<?= $data['section_sub_id'] ?>" rowspan="<?= count($sub['indikator_kriteria']) * count($data['indikator']) ?>" class="section-sub-result-<?= $section['section_id'] ?>-<?= $data['section_sub_id'] ?> hidden md:table-cell md:border px-6 py-3">
+									<td data-section-id="<?= $section['section_id'] ?>" data-section-sub-id="<?= $data['section_sub_id'] ?>" rowspan="<?= count($sub['indikator_kriteria']) * count($data['indikator']) ?>" class="section-sub-result-<?= $section['section_id'] ?>-<?= $data['section_sub_id'] ?> hidden md:table-cell md:border-b md:border-primary-900/20 px-6 py-3">
 										<?= $data['section_sub_skor_result'] ?>
 									</td>
 								<?php endif; ?>
@@ -225,8 +207,8 @@ ob_start();
 								<!-- Indikator Kriteria -->
 								<?php if ($key == 0) continue; ?>
 								<tr class="hidden md:table-row">
-									<td class="md:border px-6 py-3"><?= $value['nama'] ?></td>
-									<td class="md:border px-6 py-3"><?= $value['nilai'] ?></td>
+									<td class="md:border-b md:border-primary-900/20 md:bg-primary-500/10 px-6 py-3"><?= $value['nama'] ?></td>
+									<td class="md:border-b md:border-primary-900/20 md:bg-primary-500/10 px-6 py-3"><?= $value['nilai'] ?></td>
 								</tr>
 							<?php endforeach; ?>
 						<?php endforeach; ?>
@@ -254,16 +236,17 @@ ob_start();
 			</tbody>
 		</table>
 	</div>
-	<div class="p-2 border-l-4! border-l-blue-500! border border-gray-200 rounded-lg grid grid-cols-1 gap-1 bg-white" style="padding: 1rem 1.5rem;">
-		<h2 class="text-lg font-bold">Kesimpulan Evaluasi</h2>
-		<span class="font-bold">Hasil Evaluasi: <span class="font-bold">
-				<?= ($infrastruktur['infrastruktur_skor'] > 93.5 ? 'Infrastruktur Berfungsi' : ($infrastruktur['infrastruktur_skor'] > 33 ? 'Infrastruktur Kurang Berfungsi' : 'Infrastruktur Tidak Berfungsi')) ?>
-			</span>
+	<div class="p-2 border-l-4! border-l-primary-700! border border-gray-200 rounded-lg grid grid-cols-1 gap-3 bg-white" style="padding: 1rem 1.5rem;">
+		<h2 class="text-lg font-bold flex items-center gap-2 text-primary-700">
+			<i class="fas fa-chart-pie"></i>
+			Kesimpulan Evaluasi
+		</h2>
+		<span class="text-primary-900" style="opacity: 0.8;">
+			<?= ($infrastruktur['infrastruktur_skor'] > 93.5 ? 'Infrastruktur Berfungsi' : ($infrastruktur['infrastruktur_skor'] > 33 ? 'Infrastruktur Kurang Berfungsi' : 'Infrastruktur Tidak Berfungsi')) ?>
 		</span>
-		<span class="font-bold">Total Skor: <span class="font-bold">
-				<?= $infrastruktur['infrastruktur_skor'] ?>/100
-			</span>
-		</span>
+		<strong class="font-bold text-lg text-primary-900" style="font-weight: 900;">
+			Total Skor: <?= $infrastruktur['infrastruktur_skor'] ?>/100
+		</strong>
 	</div>
 </div>
 <?php
